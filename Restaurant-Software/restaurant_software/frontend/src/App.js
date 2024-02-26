@@ -1,11 +1,17 @@
 import React from 'react'
-import Header from './components/Header'
+import { BrowserRouter as Router, Route } from "react-router-dom"
+
+// Pages and Components
+import MainPage from './pages/MainPage'
+import TablesPage from './pages/TablesPage'
 
 export default function App() {
   return (
-    <div className ="App">
-      <Header/>
-      BELOW HEADER
-    </div>
+    <Router>
+      <div className="app">
+        <Route path="/" exact component={MainPage} />
+        <Route path="/tables" component={TablesPage} />
+      </div>
+    </Router>
   )
 }
