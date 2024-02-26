@@ -6,3 +6,6 @@ node_modules/
 
 # Ignore the datebase
 db.sqlite3
+
+# Ignore python cache files
+*.pyc
