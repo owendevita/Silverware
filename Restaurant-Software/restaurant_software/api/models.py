@@ -22,3 +22,8 @@ class Order(models.Model):
 
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+
+class RestaurantLayout(models.Model):
+    layout = models.JSONField()
+
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
