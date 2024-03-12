@@ -6,6 +6,7 @@ from .views import (
     EmployeeViewSet,
     MenuViewSet,
     OrderViewSet,
+    RestaurantLayoutViewSet
 )
 
 # Create a router and register our viewsets with it.
@@ -14,6 +15,7 @@ router.register(r'restaurants', RestaurantViewSet)
 router.register(r'employees', EmployeeViewSet)
 router.register(r'menus', MenuViewSet)
 router.register(r'orders', OrderViewSet)
+router.register(r'restaurantlayout', RestaurantLayoutViewSet)
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [

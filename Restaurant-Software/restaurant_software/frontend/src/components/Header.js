@@ -2,7 +2,7 @@ import React from 'react'
 
 const header_style = {
   header: {
-    color: 'blue'
+    color: 'red'
   }
 }
 

@@ -1,10 +1,11 @@
 from rest_framework import viewsets
-from .models import Restaurant, Employee, Menu, Order
+from .models import Restaurant, Employee, Menu, Order, RestaurantLayout
 from .serializers import (
     RestaurantSerializer,
     EmployeeSerializer,
     MenuSerializer,
     OrderSerializer,
+    RestaurantLayoutSerializer
 )
 
 class RestaurantViewSet(viewsets.ModelViewSet):
@@ -22,3 +23,7 @@ class MenuViewSet(viewsets.ModelViewSet):
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
+class RestaurantLayoutViewSet(viewsets.ModelViewSet):
+    queryset = RestaurantLayout.objects.all()
+    serializer_class = RestaurantLayoutSerializer
