@@ -1,25 +1,30 @@
 import React from 'react'
 
-const button_style = {
-    button: {
-      backgroundColor: '#f44336'
-    }
-  }
-
-const DeleteButton = ({ hasLayout, layoutID, setHasLayout, setPosition }) => {
+const DeleteButton = ({ style, hasLayout, layoutID, setHasLayout, setPosition, setLayoutID }) => {
 
     const clickHandler = () => {
         if(hasLayout) {
-            fetch(`/api/layouts/${layoutID}/`, {method: 'DELETE'}).then(() => {
+            fetch(`/api/layouts/${layoutID}/`, {method: 'DELETE'}).then( async () => {
+            
+              let response = await fetch('/api/restaurants/1/layouts/');
+              let data = await response.json();
+          
+              if(!data || data.length == 0) {
+               
                 setHasLayout(false);
-                setPosition({ x: 0, y: 0 });
+                setLayoutID(null);
+
+              } else {
+                setLayoutID(data[0].id);
+                setHasLayout(true);
+              }
             });
 
     }
 }
 
   return (
-    <button onClick={clickHandler} style={button_style.button}>Delete</button>
+    <button onClick={clickHandler} style={style}>Delete</button>
   )
 }
 

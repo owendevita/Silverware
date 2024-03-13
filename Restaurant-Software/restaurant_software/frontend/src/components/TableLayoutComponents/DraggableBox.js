@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Draggable from 'react-draggable'
 
-
-const DraggableBox = ( { setPosition, position, hasLayout }) => {
+const DraggableBox = ( { style, setPosition, position, hasLayout, layoutID }) => {
   
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getPosition()
-  }, [hasLayout]); // <-- empty array means 'run once'
+  }, [hasLayout, layoutID]);
 
 
   let getPosition = async () => {
@@ -16,19 +15,14 @@ const DraggableBox = ( { setPosition, position, hasLayout }) => {
     //
     // TO-DO: MAKE RESTAURANT ID CHANGE DEPENDING ON USER'S ASSIGNED RESTAURANT
     //
-    let response = await fetch('/api/restaurants/1/layouts/');
-    let data = await response.json();
-
-    if(!data || data.length == 0) {
+    if(!hasLayout || !layoutID || layoutID == null) {
      
       setPosition({x: 0, y: 0});
 
     } else {
-
-      const lastElement = data[data.length - 1];
-      const {x, y} = lastElement.position;
-      setPosition({x: x, y: y});
-
+      let response = await fetch(`/api/layouts/${layoutID}/`, {method: 'GET'});
+      let data = await response.json();
+      setPosition({x: data.position.x, y: data.position.y});
     }
 
     setLoading(false);
@@ -36,9 +30,14 @@ const DraggableBox = ( { setPosition, position, hasLayout }) => {
 
   }
 
-  const onDrag = (event, ui) => {
+  const onStart = () => {
+    style.cursor = 'grabbing';
+  }
+
+  const onStop = (event, ui) => {
     const { x, y } = ui;
     setPosition({ x, y });
+    style.cursor = 'grab';
   }
 
 
@@ -52,8 +51,9 @@ const DraggableBox = ( { setPosition, position, hasLayout }) => {
         position={position}
         grid={[25, 25]}
         scale={1}
-        onStop={onDrag}>
-        <div>
+        onStart={onStart}
+        onStop={onStop}>
+        <div style={style}>
             <div>This element is draggable!!</div>
         </div>
   </Draggable>

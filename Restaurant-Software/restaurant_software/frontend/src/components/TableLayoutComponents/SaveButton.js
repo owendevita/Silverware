@@ -4,7 +4,7 @@ const SaveButton = ( { position, layoutID, setLayoutID, hasLayout, setHasLayout 
 
   useEffect(() => {
     checkLayouts()
-  }); 
+  }, []); 
 
 
   const checkLayouts = async () => {
@@ -24,9 +24,10 @@ const SaveButton = ( { position, layoutID, setLayoutID, hasLayout, setHasLayout 
       // 
       // TO-DO: HAVE DROP DOWNS WHERE YOU CAN CHOOSE WHICH LAYOUT TO EDIT
       //
-      const lastElement = data[data.length - 1];
-      const ID = lastElement.id;
-      setLayoutID(ID);
+      const firstElement = data[0];
+
+      console.log("SETTING INITIAL ID");
+      setLayoutID(firstElement.id);
       setHasLayout(true);
 
     }
@@ -38,16 +39,25 @@ const SaveButton = ( { position, layoutID, setLayoutID, hasLayout, setHasLayout 
     const currentPosition = position;
     if(!hasLayout) {
       fetch('/api/create/layout', {
-          method: 'POST',
-          headers: {  
-          'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({position: currentPosition, restaurant: 1})
-        }).then(() => {
-          setHasLayout(true);
-
-        });
-    } else {
+        method: 'POST',
+        headers: {  
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({position: currentPosition, restaurant: 1}) // TO-DO: RESTAURANT ID MUST BE USER'S ASSIGNED RESTAURANT
+      }) .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    }) .then(data => {
+        setHasLayout(true);
+        setLayoutID(data.id);
+    })
+    .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+    });
+    
+  } else {
 
       let response = await fetch(`/api/layouts/${layoutID}/`);
       let data = await response.json();
