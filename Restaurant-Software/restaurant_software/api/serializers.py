@@ -14,7 +14,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
-        fields = ['items', 'restaurant']
+        fields = ['id', 'items', 'restaurant']
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,4 +24,4 @@ class OrderSerializer(serializers.ModelSerializer):
 class RestaurantLayoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = RestaurantLayout
-        fields = ['id', 'restaurant', 'layout']
+        fields = ['id', 'restaurant', 'position']
