@@ -1,10 +1,10 @@
 import React from 'react'
 
-import DraggableBox from '../components/DraggableBox'
+import TableLayoutParent from '../components/TableLayoutComponents/TableLayoutParent'
 
 const MainPage = () => {
   return (
-    <DraggableBox />
+    <TableLayoutParent />
   )
 }
 
