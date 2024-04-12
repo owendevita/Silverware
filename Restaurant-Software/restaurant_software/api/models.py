@@ -8,6 +8,8 @@ class Employee(models.Model):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
     employee_id = models.PositiveIntegerField(unique=True)
+    password = models.CharField(max_length=50)
+    permissions = models.JSONField()
 
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
 
