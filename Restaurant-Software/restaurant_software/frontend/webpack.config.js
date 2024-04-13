@@ -20,6 +20,14 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      
+      {
+        test: /\.(jpe?g|png|svg)$/,
+        use: [{
+            loader: 'file-loader'
+        }]
+      },
+      
     ],
   },
   optimization: {
@@ -30,6 +38,7 @@ module.exports = {
       "process.env": {
         // This has effect on the react lib size
         NODE_ENV: JSON.stringify("production"),
+        PUBLIC_URL: JSON.stringify('/'),
       },
     }),
   ],
