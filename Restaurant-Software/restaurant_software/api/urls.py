@@ -18,6 +18,10 @@ urlpatterns = [
     path('create/employee/', views.create_employee, name='create_employee'),
     path('employees/<int:pk>/', views.employee_details, name='employee_details'),
 
+    #Login / Authentication URLS
+    path('login/', views.login, name='login'),
+    path('token/info', views.get_token_info, name='get_token_info'),
+
     # Menu URLs
     path('create/menu/', views.create_menu, name='create_menu'),
     path('menus/<int:pk>/', views.menu_details, name='menu_details'),
