@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
+from django.contrib.auth.hashers import make_password
 
 from .models import Restaurant, Employee, Menu, Order, RestaurantLayout
 from .serializers import (
@@ -99,6 +100,12 @@ def restaurant_layout_list(request, restaurant_pk):
 @api_view(['POST'])
 def create_employee(request):
     if request.method == 'POST':
+
+        # Convert the plaintext password to a hash.
+        password = request.data.get('password')
+        hashed_password = make_password(password)
+        request.data['password'] = hashed_password
+
         serializer = EmployeeSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -107,7 +114,6 @@ def create_employee(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def employee_details(request, pk):
-    
     try:
         employee = Employee.objects.get(pk=pk)
     except Employee.DoesNotExist:
@@ -136,15 +142,15 @@ def login(request):
         try:
             employee = Employee.objects.get(employee_id=employee_id)
         except Employee.DoesNotExist:
-            error_message = {'error': 'Employee does not exist.', 'code': '404'}
+            error_message = {'error': 'Employee does not exist.', 'code': 404}
             return Response(error_message, status=404)
 
         if check_password(password, employee.password):
             # Authentication successful! Generate and return token key.
-            token, created = Token.objects.get_or_create(user=employee)  # Assuming Employee is your user model
-            return Response({'token': token.key})
+            token, created = Token.objects.get_or_create(user=employee)
+            return Response({'token': token.key, 'permissions': employee.permissions, 'restaurant': employee.restaurant.id})
         else:
-            error_message = {'error': 'Password incorrect.', 'code': '401', 'password': password, 'employee_password' : employee.password}
+            error_message = {'error': 'Password incorrect.', 'code': 401}
             return Response(error_message, status=401)
 
 @api_view(['POST'])
@@ -152,14 +158,14 @@ def get_token_info(token_key):
     try:
         token = Token.objects.get(key=token_key)
         employee = token.employee
-        permissions = token.permissions
-        restaurant = token.restaurant
+        permissions = employee.permissions
+        restaurant = employee.restaurant.id
 
         response_message = {'employee': employee, 'permissions': permissions, 'restaurant': restaurant}
         return Response(response_message)
 
     except Token.DoesNotExist:
-            error_message = {'error' : 'Token does not exist.', 'code': '404'}
+            error_message = {'error' : 'Token does not exist.', 'code': 404}
             return Response(error_message)
 
 # Menu Views
