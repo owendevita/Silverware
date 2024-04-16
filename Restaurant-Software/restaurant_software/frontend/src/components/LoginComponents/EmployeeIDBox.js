@@ -4,8 +4,7 @@ const EmployeeIDBox = ({employeeID, setEmployeeID}) => {
 
   const handleInputChange = (event) => {
     const employeeIDValue = event.target.value;
-    setEmployeeID(employeeIDValue);
-
+    setEmployeeID(parseInt(employeeIDValue));
   }
 
   return (

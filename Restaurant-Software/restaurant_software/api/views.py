@@ -139,9 +139,6 @@ def login(request):
             error_message = {'error': 'Employee does not exist.', 'code': '404'}
             return Response(error_message, status=404)
 
-        print(password)
-        print(employee.password)
-
         if check_password(password, employee.password):
             # Authentication successful! Generate and return token key.
             token, created = Token.objects.get_or_create(user=employee)  # Assuming Employee is your user model

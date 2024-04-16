@@ -10,7 +10,7 @@ const PasswordBox = ({password, setPassword}) => {
   
   return (
     <div>
-      <label htmlFor="password">Password:   </label>
+      <label htmlFor="password">Password:</label>
       <input type="password" id="password" name="password" value={password} minlength="8" required onChange={handleInputChange} />
   </div>
   )

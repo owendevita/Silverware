@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SubmitButton = (employeeID, password) => {
+const SubmitButton = ({ employeeID, password }) => {
   
   const handleClick = async () => {
     const response = await fetch('/api/login/', {
@@ -8,7 +8,7 @@ const SubmitButton = (employeeID, password) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ employee_id: employeeID, password: password })
+      body: JSON.stringify({employee_id: employeeID, password: password})
     });
   
     const data = await response.json();
