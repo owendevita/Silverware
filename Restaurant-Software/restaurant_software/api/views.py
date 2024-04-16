@@ -1,6 +1,9 @@
+from django.contrib.auth.hashers import make_password, check_password
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 
 from .models import Restaurant, Employee, Menu, Order, RestaurantLayout
 from .serializers import (
@@ -123,6 +126,42 @@ def employee_details(request, pk):
         employee.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+# Login/Authentication Views
+@api_view(['POST'])
+def login(request):
+    if request.method == 'POST':
+        employee_id = request.data.get('employee_id')
+        password = request.data.get('password')
+
+        try:
+            employee = Employee.objects.get(employee_id=employee_id)
+        except Employee.DoesNotExist:
+            error_message = {'error' : 'Employee does not exist.', 'code': '404'}
+            return Response(error_message)
+
+
+        if check_password(password, employee.password):
+            # Authentication successful! Generate and return token.
+            token, created = Token.objects.get_or_create(employee=employee, permissions=employee.permissions, restaurant=employee.restaurant)
+            return token
+        else:
+            error_message = {'error' : 'Password incorrect.', 'code': '401'}
+            return Response(error_message)
+
+@api_view(['POST'])
+def get_token_info(token_key):
+    try:
+        token = Token.objects.get(key=token_key)
+        employee = token.employee
+        permissions = token.permissions
+        restaurant = token.restaurant
+
+        response_message = {'employee': employee, 'permissions': permissions, 'restaurant': restaurant}
+        return Response(response_message)
+
+    except Token.DoesNotExist:
+            error_message = {'error' : 'Token does not exist.', 'code': '404'}
+            return Response(error_message)
 
 # Menu Views
 @api_view(['POST'])

@@ -21,9 +21,6 @@ const SaveButton = ( { position, layoutID, setLayoutID, hasLayout, setHasLayout 
 
     } else {
 
-      // 
-      // TO-DO: HAVE DROP DOWNS WHERE YOU CAN CHOOSE WHICH LAYOUT TO EDIT
-      //
       const firstElement = data[0];
 
       console.log("SETTING INITIAL ID");
