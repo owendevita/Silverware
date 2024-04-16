@@ -20,7 +20,7 @@ urlpatterns = [
 
     #Login / Authentication URLS
     path('login/', views.login, name='login'),
-    path('token/info', views.get_token_info, name='get_token_info'),
+    path('token/info/', views.get_token_info, name='get_token_info'),
 
     # Menu URLs
     path('create/menu/', views.create_menu, name='create_menu'),

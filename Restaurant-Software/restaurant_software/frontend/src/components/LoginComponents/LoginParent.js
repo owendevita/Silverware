@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import EmployeeIDBox from './EmployeeIDBox'
 import LogoImageLabel from './LogoImageLabel'
@@ -7,12 +7,16 @@ import SubmitButton from './SubmitButton'
 
 
 const LoginParent = () => {
+
+  let [employeeID, setEmployeeID] = useState(null);
+  let [password, setPassword] = useState(null);
+
   return (
     <div>
-        <LogoImageLabel />
-        <EmployeeIDBox />
-        <PasswordBox />
-        <SubmitButton />
+        <LogoImageLabel  />
+        <EmployeeIDBox setEmployeeID={setEmployeeID} employeeID={employeeID}/>
+        <PasswordBox setPassword={setPassword} password={password}/>
+        <SubmitButton password={password} employeeID={employeeID}/>
     </div>
   )
 }

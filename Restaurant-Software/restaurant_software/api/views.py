@@ -136,17 +136,19 @@ def login(request):
         try:
             employee = Employee.objects.get(employee_id=employee_id)
         except Employee.DoesNotExist:
-            error_message = {'error' : 'Employee does not exist.', 'code': '404'}
-            return Response(error_message)
+            error_message = {'error': 'Employee does not exist.', 'code': '404'}
+            return Response(error_message, status=404)
 
+        print(password)
+        print(employee.password)
 
         if check_password(password, employee.password):
-            # Authentication successful! Generate and return token.
-            token, created = Token.objects.get_or_create(employee=employee, permissions=employee.permissions, restaurant=employee.restaurant)
-            return token
+            # Authentication successful! Generate and return token key.
+            token, created = Token.objects.get_or_create(user=employee)  # Assuming Employee is your user model
+            return Response({'token': token.key})
         else:
-            error_message = {'error' : 'Password incorrect.', 'code': '401'}
-            return Response(error_message)
+            error_message = {'error': 'Password incorrect.', 'code': '401', 'password': password, 'employee_password' : employee.password}
+            return Response(error_message, status=401)
 
 @api_view(['POST'])
 def get_token_info(token_key):
