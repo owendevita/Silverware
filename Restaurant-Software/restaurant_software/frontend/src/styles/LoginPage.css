@@ -1,0 +1,59 @@
+/* Beautifying */ 
+
+label {
+    color: #493843 ;
+    font-family: Arial;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+input {
+    background-color: #493843;
+    color: #CBBFBB;
+    width: 15%;
+    height: 15%;
+    font-family: Arial;
+    font-weight: bold;
+
+    margin: 5px;
+}
+::-ms-reveal { /* Changes the color of the reveal password button */
+    filter: invert(100%);
+  }
+
+button {
+    color: #493843;
+    background-color: #CBBFBB;
+    border-color: #493843;
+    border-width: medium;
+
+    margin: 5px;
+
+}
+
+.login-page {
+    background-color: #CBBFBB ;
+}
+
+.error-message{
+    background-color: #DB2B39 ;
+    color: #493843 ;
+    font-weight: bold;
+    font-size: 125%;
+    margin: 5px;
+}
+
+/* Needed */
+
+.login-page {
+    background-color: #CBBFBB;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    padding: 5px;
+}

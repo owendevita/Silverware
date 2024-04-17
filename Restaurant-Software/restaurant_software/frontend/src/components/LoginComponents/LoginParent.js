@@ -5,7 +5,6 @@ import LogoImageLabel from './LogoImageLabel'
 import PasswordBox from './PasswordBox'
 import SubmitButton from './SubmitButton'
 
-
 const LoginParent = () => {
 
   let [employeeID, setEmployeeID] = useState(null);
@@ -13,7 +12,7 @@ const LoginParent = () => {
 
   return (
     <div>
-        <LogoImageLabel  />
+        <LogoImageLabel/>
         <EmployeeIDBox setEmployeeID={setEmployeeID} employeeID={employeeID}/>
         <PasswordBox setPassword={setPassword} password={password}/>
         <SubmitButton password={password} employeeID={employeeID}/>
