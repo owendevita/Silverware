@@ -18,9 +18,13 @@ urlpatterns = [
     path('create/employee/', views.create_employee, name='create_employee'),
     path('employees/<int:pk>/', views.employee_details, name='employee_details'),
 
+    # Waitlist URLs
+    path('create/waitlist/', views.create_waitlist, name='create_waitlist'), 
+    path('waitlists/<int:pk>/', views.waitlist_details, name='waitlist_details'),
+
     #Login / Authentication URLS
     path('login/', views.login, name='login'),
-    path('token/info', views.get_token_info, name='get_token_info'),
+    path('token/info/', views.get_token_info, name='get_token_info'),
 
     # Menu URLs
     path('create/menu/', views.create_menu, name='create_menu'),
