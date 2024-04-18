@@ -27,6 +27,7 @@ button {
     border-color: #493843;
     border-width: medium;
 
+
     margin: 5px;
 
 }
@@ -46,7 +47,6 @@ button {
 /* Needed */
 
 .login-page {
-    background-color: #CBBFBB;
     width: 100vw;
     height: 100vh;
     display: flex;

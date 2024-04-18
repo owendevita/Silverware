@@ -21,6 +21,8 @@ const SubmitButton = ({ employeeID, password }) => {
         console.log("TOKEN FOUND!");
 
         if (data.permissions && data.restaurant) {
+          
+          // TO-DO - REDIRECT TO SPECIFIC PAGES BASED ON PERMISSIONS
           window.location = '/';
 
         } else {

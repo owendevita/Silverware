@@ -21,6 +21,10 @@ class Menu(models.Model):
     items = models.JSONField()
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
 
+class Waitlist(models.Model):
+    list = models.JSONField() # {{'name': 'John', party_size: 4}, {'name' : 'Sally', party_size: 3}}
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+
 class Order(models.Model):
     table_number = models.PositiveSmallIntegerField()
     items = models.JSONField()
