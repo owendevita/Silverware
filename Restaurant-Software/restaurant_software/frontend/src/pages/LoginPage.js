@@ -1,9 +1,12 @@
 import React from 'react'
 import LoginParent from '../components/LoginComponents/LoginParent'
+import '../styles/LoginPage.css'
 
 const LoginPage = () => {
   return (
-    <LoginParent />  
+    <div className="login-page">
+      <LoginParent /> 
+    </div>
   )
 }
 
