@@ -1,28 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Route, Navigate } from 'react-router-dom';
 import { getUserInfo } from '../services/userService';
 
-const SecureRouter = ({ path, element: Element, requiredPermissions }) => {
-    const checkPermission = async () => {
-      try {
-        const tokenData = await getUserInfo();
-        const hasRequiredPermission = requiredPermissions.some(permission =>
-          tokenData.permissions[permission]
-        );
-        console.log(tokenData.permissions);
-        console.log("HAS PERMISSION: ", hasRequiredPermission);
-        return hasRequiredPermission
-      } catch (error) {
-        console.error('Error fetching user info:', error);
-        return false;
-      }
+const SecureRouter = ({ path, component, requiredPermissions, children }) => {
+  const [hasPermission, setHasPermission] = useState(null);
 
+  const checkPermission = async () => {
+    try {
+      const tokenData = await getUserInfo();
+      const hasRequiredPermission = requiredPermissions.some(permission =>
+        tokenData.permissions[permission]
+      );
+      setHasPermission(hasRequiredPermission);
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+      setHasPermission(false);
     }
-    
-    if (checkPermission() == true) {
-        return <Route path={path} element={<Element />} />;
+  };
+
+  checkPermission(); // Invoke checkPermission directly when the component is rendered
+
+  if (hasPermission === null) {
+    // Still loading permissions, render nothing or a loading indicator
+    return null;
+  }
+
+  if (hasPermission) {
+    return children
   } else {
-        return<div>Insufficient permissions.</div>
+    // Handle case where user does not have permission
+    return <Navigate to="/" replace />;
   }
 };
 
