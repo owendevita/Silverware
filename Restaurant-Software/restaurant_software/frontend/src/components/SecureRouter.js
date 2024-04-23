@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Route, Navigate } from 'react-router-dom';
 import { getUserInfo } from '../services/userService';
 
-const SecureRouter = ({ path, component, requiredPermissions, children }) => {
+const SecureRouter = ({requiredPermissions, children }) => {
   const [hasPermission, setHasPermission] = useState(null);
 
   const checkPermission = async () => {
@@ -26,7 +26,7 @@ const SecureRouter = ({ path, component, requiredPermissions, children }) => {
   }
 
   if (hasPermission) {
-    return children
+    return children;
   } else {
     // Handle case where user does not have permission
     return <Navigate to="/" replace />;

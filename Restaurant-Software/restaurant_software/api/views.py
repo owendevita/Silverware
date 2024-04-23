@@ -124,6 +124,11 @@ def employee_details(request, pk):
         serializer = EmployeeSerializer(employee)
         return Response(serializer.data)
     elif request.method == 'PUT':
+        #Convert plaintext password to hash.
+        password = request.data.get('password')
+        hashed_password = make_password(password)
+        request.data['password'] = hashed_password
+        
         serializer = EmployeeSerializer(employee, data=request.data)
         if serializer.is_valid():
             serializer.save()
