@@ -18,8 +18,9 @@ class Employee(AbstractBaseUser):
     REQUIRED_FIELDS=['password', 'restaurant']
 
 class Menu(models.Model):
-    items = models.JSONField()
+    items = models.JSONField() #{{"name": "Cheeseburger", item_price: 6}}
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    name = models.CharField(max_length=25)
 
 class Waitlist(models.Model):
     list = models.JSONField() # {{'name': 'John', party_size: 4}, {'name' : 'Sally', party_size: 3}}
@@ -35,5 +36,4 @@ class Order(models.Model):
 
 class RestaurantLayout(models.Model):
     position = models.JSONField()
-
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
