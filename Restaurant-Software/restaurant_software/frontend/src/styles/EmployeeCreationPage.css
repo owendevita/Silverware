@@ -1,14 +1,12 @@
 /* Beautifying */
-
-
-
-/* Popup Styling */
 .employee-creation-page {
     background-color: #CBBFBB ;
 }
 
+
+/* Popup Styling */
 .popup-outer {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -22,7 +20,7 @@
 
 .popup-inner {
     position: relative;
-    padding: 1%;
+    padding: 1.75%;
     width: 100%;
     max-width: 640px;
     background-color: #493843;
@@ -40,7 +38,6 @@
     width: 35%;
     height: 15%;
     font-family: Arial;
-    font-weight: bold;
 
     margin: 5px;
 }
@@ -49,10 +46,27 @@
   }
 
 .popup-titles {
+    position: relative; /* Position the element relative to its container */  
+    left: 50%; /* Move the element horizontally by 50% of its container's width */
+    transform: translateX(-50%); /* Adjust the position to center horizontally */
     color: #CBBFBB;
-    
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 160%;
+    text-decoration: underline;
+    margin: 0px;
+}
 
-    margin: 5px;
+.permission-title{
+    position: relative; /* Position the element relative to its container */  
+    left: 50%; /* Move the element horizontally by 50% of its container's width */
+    transform: translateX(-50%); /* Adjust the position to center horizontally */
+    color: #CBBFBB;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 100%;
+    
+    margin: 0px;
 }
 
 .popup-buttons {
@@ -93,3 +107,18 @@
 
     padding: 5px;
 } */
+
+.permission-organizer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    text-align: center;
+    padding: 5px;
+}
+
+.permission-item {
+    flex-basis: calc(50% - 10px); 
+    padding: 5px;
+    box-sizing: border-box;
+}
