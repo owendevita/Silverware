@@ -42,7 +42,7 @@ const SubmitButton = ({ employeeID, password }) => {
   
   return (
     <div>
-      <button type="submit" onClick={handleClick}>Login</button>
+      <button className="login-buttons" type="submit" onClick={handleClick}>Login</button>
       <br/>
       {loginError && <div className="error-message">Incorrect Employee ID or Password</div>}
     </div>

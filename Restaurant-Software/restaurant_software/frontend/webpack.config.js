@@ -1,7 +1,11 @@
 const path = require("path");
 const webpack = require("webpack");
 
-module.exports = {
+
+module.exports = (env, argv) => {
+  const mode = argv.mode || 'development'; // dev mode by default
+
+  return {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "./static/frontend"),
@@ -22,7 +26,7 @@ module.exports = {
       },
       
       {
-        test: /\.(jpe?g|png|svg)$/,
+        test: /\.(jpe?g|png|svg|ico)$/,
         use: [{
             loader: 'file-loader'
         }]
@@ -37,9 +41,10 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": {
         // This has effect on the react lib size
-        NODE_ENV: JSON.stringify("production"),
+        NODE_ENV: JSON.stringify(mode),
         PUBLIC_URL: JSON.stringify('/'),
       },
     }),
   ],
+}
 };

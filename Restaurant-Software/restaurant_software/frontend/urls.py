@@ -6,5 +6,6 @@ urlpatterns = [
     path('tables/', index),
     path('login/', index),
     path('waitlist/', index),
-    path('menu/', index)
+    path('manage-employees/', index),
+    path('menu/', index),
 ]

@@ -9,7 +9,7 @@ class RestaurantSerializer(serializers.ModelSerializer):
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = ['first_name', 'last_name', 'employee_id', 'password', 'permissions', 'restaurant']
+        fields = ['id', 'first_name', 'last_name', 'employee_id', 'password', 'permissions', 'restaurant']
 
 class WaitlistSerializer(serializers.ModelSerializer):
     class Meta:
