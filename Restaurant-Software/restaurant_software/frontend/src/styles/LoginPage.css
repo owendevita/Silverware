@@ -1,13 +1,13 @@
 /* Beautifying */ 
 
-label {
+.login-labels {
     color: #493843 ;
     font-family: Arial;
     font-size: 140%;
     font-weight: bold;
 }
 
-input {
+.login-inputs {
     background-color: #493843;
     color: #CBBFBB;
     width: 15%;
@@ -21,7 +21,7 @@ input {
     filter: invert(100%);
   }
 
-button {
+.login-buttons {
     color: #493843;
     background-color: #CBBFBB;
     border-color: #493843;

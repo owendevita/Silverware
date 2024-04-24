@@ -1,9 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Popup from './CreatePopupComponents/Popup'
 
-const CreateButton = () => {
+const CreateButton = ({restaurantID}) => {
+  
+  const [popup, setPopup] = useState(false)
+
+  const handleClick = () => {
+    setPopup(!popup);
+  }
+  
   return (
     <div>
-        <div>CreateButton</div>
+        <button onClick={handleClick}>Create</button>
+        {popup && <Popup setPopup={setPopup} restaurantID={restaurantID}/>}
     </div>
   )
 }

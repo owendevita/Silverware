@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
+import EditButton from './EditButton';
+import DeleteButton from './DeleteButton';
 
-const Employee = ({first_name, last_name, employee_id, permissions, pk}) => {
+const Employee = ({first_name, last_name, employee_id, permissions, pk, setList, restaurantID}) => {
     
     const [permissionString, setPermissionString] = useState("");
 
@@ -22,6 +24,7 @@ const Employee = ({first_name, last_name, employee_id, permissions, pk}) => {
         <div>Last Name: {last_name}</div>
         <div>Employee ID: {employee_id}</div>
         <div>Permissions: {permissionString}</div>
+        <EditButton pk={pk}/> <DeleteButton pk={pk} setList={setList} restaurantID={restaurantID}/> 
     </div>
   )
 }

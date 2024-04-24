@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SecureRouter from './components/SecureRouter';
+import faviconUrl from '../static/assets/favicon.ico'
 
 // Pages and Components
 import MainPage from './pages/MainPage';
@@ -11,6 +12,18 @@ import EmployeeCreationPage from './pages/EmployeeCreationPage'
 
 
 export default function App() {
+  
+  useEffect(() => {
+    const faviconElement = document.querySelector('link[rel="icon"]');
+    if(faviconElement !== null) {
+      faviconElement.href = faviconUrl;
+    } else {
+      console.log("faviconElement null");
+    }
+      
+  }, [])
+  
+  
   return (
     <Router>
       <Routes>
