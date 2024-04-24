@@ -9,3 +9,7 @@ db.sqlite3
 
 # Ignore python cache files
 *.pyc
+
+# Ignore Main.js
+Restaurant-Software/restaurant_software/frontend/static/frontend/main.js.LICENSE.txt
+Restaurant-Software/restaurant_software/frontend/static/frontend/main.js 
