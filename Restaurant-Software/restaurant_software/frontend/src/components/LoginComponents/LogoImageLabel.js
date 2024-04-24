@@ -3,7 +3,7 @@ import SilverWareLogo from '../../../static/assets/SILVERWARE_LOGO.png'
 
 const stylesheet = {
   logo: {
-    maxWidth: '15%',
+    maxWidth: '22%',
     height: 'auto'
 
   }

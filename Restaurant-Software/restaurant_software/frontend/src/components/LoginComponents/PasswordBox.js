@@ -1,10 +1,18 @@
 import React from 'react'
 
-const PasswordBox = () => {
+const PasswordBox = ({password, setPassword}) => {
+  
+  const handleInputChange = (event) => {
+    const passwordValue = event.target.value;
+    setPassword(passwordValue);
+
+  }
+  
   return (
     <div>
-      <label htmlFor="password">Password:   </label>
-      <input type="password" id="password" name="password" minlength="8" required />
+      <label className="login-labels" htmlFor="password">Password</label>
+      <br/>
+      <input className="login-inputs" type="password" id="password" name="password" value={password} minlength="8" required onChange={handleInputChange} />
   </div>
   )
 }
