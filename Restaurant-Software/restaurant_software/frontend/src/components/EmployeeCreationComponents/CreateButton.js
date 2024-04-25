@@ -11,7 +11,7 @@ const CreateButton = ({restaurantID}) => {
   
   return (
     <div>
-        <button onClick={handleClick}>Create</button>
+        <button className="employee-create-button" onClick={handleClick}>Create New Employee</button>
         {popup && <Popup setPopup={setPopup} restaurantID={restaurantID}/>}
     </div>
   )

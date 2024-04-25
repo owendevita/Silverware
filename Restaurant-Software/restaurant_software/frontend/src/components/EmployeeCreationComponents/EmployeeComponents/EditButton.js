@@ -10,7 +10,7 @@ const EditButton = ({pk}) => {
   
   return (
     <div>
-        <button onClick={handleClick}>Edit</button>
+        <button className="employee-edit-button" onClick={handleClick}>Edit</button>
         {popup && <Popup setPopup={setPopup} pk={pk}/>}
     </div>
   )

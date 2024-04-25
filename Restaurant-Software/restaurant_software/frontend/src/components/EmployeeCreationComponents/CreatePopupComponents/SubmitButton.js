@@ -63,7 +63,7 @@ const SubmitButton = ({firstName, lastName, passwordValue, employeeID, isManager
   }
   
   return (
-    <button className="popup-buttons" onClick={handleClick}>Create New Employee</button>
+    <button className="popup-buttons" onClick={handleClick}>Create</button>
   )
 }
 

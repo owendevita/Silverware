@@ -9,7 +9,7 @@ const Permission = ({setPermission, label, checked}) => {
   
     return (
         <div>
-            <label className="popup-labels">{label}</label> <input className="popup-inputs" type="checkbox" checked={checked} onChange={handleChange}/>
+            <label className="popup-labels">{label}</label> <input className="popup-checkboxes" type="checkbox" checked={checked} onChange={handleChange}/>
         </div>
   )
 }
