@@ -31,10 +31,19 @@ export default function App() {
         <Route
           path="/tables"
           element={
-            <SecureRouter requiredPermissions={["host", "waiter", "chef", "manager"]}> 
+            <SecureRouter requiredPermissions={["host", "waiter", "chef", "manager", "owner"]}> 
               <TablesPage/>
             </SecureRouter>}
         />
+
+        <Route
+          path="/manage-restaurants"
+          element={
+            <SecureRouter requiredPermissions={["admin"]}> 
+              <TablesPage/>
+            </SecureRouter>}
+        />
+
         <Route path="/login" element={<LoginPage />} />
         <Route path="/waitlist" element={<WaitlistPage />} />
         
