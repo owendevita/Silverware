@@ -9,6 +9,7 @@ import TablesPage from './pages/TablesPage';
 import LoginPage from './pages/LoginPage';
 import WaitlistPage from './pages/WaitlistPage';
 import EmployeeCreationPage from './pages/EmployeeCreationPage'
+import RestaurantManagementPage from './pages/RestaurantManagementPage'
 
 
 export default function App() {
@@ -40,7 +41,7 @@ export default function App() {
           path="/manage-restaurants"
           element={
             <SecureRouter requiredPermissions={["admin"]}> 
-              <TablesPage/>
+              <RestaurantManagementPage />
             </SecureRouter>}
         />
 

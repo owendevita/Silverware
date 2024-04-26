@@ -6,7 +6,7 @@ const DeleteButton = ({ style, hasLayout, layoutID, setHasLayout, setPosition, s
         if(hasLayout) {
             fetch(`/api/layouts/${layoutID}/`, {method: 'DELETE'}).then( async () => {
             
-              let response = await fetch('/api/restaurants/1/layouts/');
+              let response = await fetch(`/api/restaurants/1/layouts/`);
               let data = await response.json();
           
               if(!data || data.length == 0) {
