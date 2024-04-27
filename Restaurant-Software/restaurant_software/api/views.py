@@ -1,34 +1,47 @@
-from rest_framework import viewsets
-from .models import Restaurant, Employee, Menu, Order, RestaurantLayout
+from django.contrib.auth.hashers import make_password, check_password
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.authtoken.models import Token
+from django.contrib.auth.hashers import make_password
+
+from .models import Restaurant, Employee, Menu, Order, RestaurantLayout, Waitlist
 from .serializers import (
     RestaurantSerializer,
     EmployeeSerializer,
     MenuSerializer,
     OrderSerializer,
-    RestaurantLayoutSerializer
+    RestaurantLayoutSerializer,
+    WaitlistSerializer
 )
 
-class RestaurantViewSet(viewsets.ModelViewSet):
-    queryset = Restaurant.objects.all()
-    serializer_class = RestaurantSerializer
+# Restaurant views
+@api_view(['GET', 'POST'])
+def restaurants_list(request):
+    if request.method == 'GET':
+        restaurants = Restaurant.objects.all()
+        serializer = RestaurantSerializer(restaurants, many=True)
+        return Response(serializer.data)
 
-class EmployeeViewSet(viewsets.ModelViewSet):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
+    elif request.method == 'POST':
+        serializer = RestaurantSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class MenuViewSet(viewsets.ModelViewSet):
-    queryset = Menu.objects.all()
-    serializer_class = MenuSerializer
+@api_view(['GET', 'PUT', 'DELETE'])
+def restaurant_details(request, pk):
+    try:
+        restaurant = Restaurant.objects.get(pk=pk)
+    except Restaurant.DoesNotExist:
+        return Response({'error' : 'Restaurant not found.'}, status=status.HTTP_404_NOT_FOUND)
 
-class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
+    if request.method == 'GET':
+        serializer = RestaurantSerializer(restaurant)
+        return Response(serializer.data)
 
-<<<<<<< Updated upstream
-class RestaurantLayoutViewSet(viewsets.ModelViewSet):
-    queryset = RestaurantLayout.objects.all()
-    serializer_class = RestaurantLayoutSerializer
-=======
     elif request.method == 'PUT':
         serializer = RestaurantSerializer(restaurant, data=request.data)
         if serializer.is_valid():
@@ -39,7 +52,6 @@ class RestaurantLayoutViewSet(viewsets.ModelViewSet):
     elif request.method == 'DELETE':
         restaurant.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
 @api_view(['GET'])
 def restaurant_menu_list(request, restaurant_pk):
     try:
@@ -296,4 +308,3 @@ def layout_details(request, pk):
     elif request.method == 'DELETE':
         layout.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
->>>>>>> Stashed changes

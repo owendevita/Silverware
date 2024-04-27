@@ -1,27 +1,11 @@
 from django.urls import path
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import (
-    RestaurantViewSet,
-    EmployeeViewSet,
-    MenuViewSet,
-    OrderViewSet,
-    RestaurantLayoutViewSet
-)
+from . import views
 
-# Create a router and register our viewsets with it.
-router = DefaultRouter()
-router.register(r'restaurants', RestaurantViewSet)
-router.register(r'employees', EmployeeViewSet)
-router.register(r'menus', MenuViewSet)
-router.register(r'orders', OrderViewSet)
-router.register(r'restaurantlayout', RestaurantLayoutViewSet)
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
-<<<<<<< Updated upstream
-    path('', include(router.urls)),
-=======
     # Restaurant URLs
     path('restaurants/', views.restaurants_list, name='restaurants_list'),
     path('restaurants/<int:pk>/', views.restaurant_details, name='restaurant_details'),
@@ -54,5 +38,4 @@ urlpatterns = [
     # Restaurant Layout URLs
     path('create/layout', views.create_layout, name='create_layout'),
     path('layouts/<int:pk>/', views.layout_details, name='layout_details'),
->>>>>>> Stashed changes
 ]
