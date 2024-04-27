@@ -1,11 +1,27 @@
 from django.urls import path
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from . import views
+from .views import (
+    RestaurantViewSet,
+    EmployeeViewSet,
+    MenuViewSet,
+    OrderViewSet,
+    RestaurantLayoutViewSet
+)
 
+# Create a router and register our viewsets with it.
+router = DefaultRouter()
+router.register(r'restaurants', RestaurantViewSet)
+router.register(r'employees', EmployeeViewSet)
+router.register(r'menus', MenuViewSet)
+router.register(r'orders', OrderViewSet)
+router.register(r'restaurantlayout', RestaurantLayoutViewSet)
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
+<<<<<<< Updated upstream
+    path('', include(router.urls)),
+=======
     # Restaurant URLs
     path('restaurants/', views.restaurants_list, name='restaurants_list'),
     path('restaurants/<int:pk>/', views.restaurant_details, name='restaurant_details'),
@@ -13,6 +29,7 @@ urlpatterns = [
     path('restaurants/<int:restaurant_pk>/employees/', views.restaurant_employee_list, name='restaurant_employee_list'),
     path('restaurants/<int:restaurant_pk>/orders/', views.restaurant_order_list, name='restaurant_order_list'),
     path('restaurants/<int:restaurant_pk>/layouts/', views.restaurant_layout_list, name='restaurant_layout_list'),
+    path('restaurants/<int:restaurant_pk>/waitlists/', views.restaurant_waitlist_list, name='restaurant_waitlist_list'),
 
     # Employee URLs
     path('create/employee/', views.create_employee, name='create_employee'),
@@ -37,4 +54,5 @@ urlpatterns = [
     # Restaurant Layout URLs
     path('create/layout', views.create_layout, name='create_layout'),
     path('layouts/<int:pk>/', views.layout_details, name='layout_details'),
+>>>>>>> Stashed changes
 ]

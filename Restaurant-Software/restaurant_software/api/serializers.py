@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Restaurant, Employee, Menu, Order, RestaurantLayout, Waitlist
+from .models import Restaurant, Employee, Menu, Order, RestaurantLayout
 
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,17 +9,12 @@ class RestaurantSerializer(serializers.ModelSerializer):
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = ['id', 'first_name', 'last_name', 'employee_id', 'password', 'permissions', 'restaurant']
-
-class WaitlistSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Waitlist
-        fields = ['id', 'list', 'restaurant']
+        fields = ['first_name', 'last_name', 'employee_id', 'restaurant']
 
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
-        fields = ['id', 'items', 'restaurant', 'name']
+        fields = ['items', 'restaurant']
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,4 +24,4 @@ class OrderSerializer(serializers.ModelSerializer):
 class RestaurantLayoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = RestaurantLayout
-        fields = ['id', 'restaurant', 'position']
+        fields = ['id', 'restaurant', 'layout']
