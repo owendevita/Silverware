@@ -3,6 +3,7 @@ import DraggableBox from './DraggableBox'
 import SaveButton from './SaveButton'
 import DeleteButton from './DeleteButton'
 import DropdownMenuParent from './DropdownMenu/DropdownMenuParent'
+import { getUserInfo } from '../../services/userService';
 
 const stylesheet = {
   delete_button: {
@@ -14,19 +15,60 @@ const stylesheet = {
 };
 
 const Parent = () => {    
-    let [position, setPosition] = useState({ x: 0, y: 0});
     let [layoutID, setLayoutID] = useState(null);
     let [hasLayout, setHasLayout] = useState(false);
+    let [layoutList, setLayoutList] = useState([]);
+
+    const [restaurantID, setRestaurantID] = useState(null);
+    
+
+    const checkLayouts = async () => {
+
+      let response = await fetch(`/api/restaurants/${restaurantID}/layouts/`);
+      let data = await response.json();
+      
+      setLayoutList(data);
+
+      if(!data || data.length == 0) {
+       
+        setHasLayout(false);
+  
+      } else {
+  
+        const firstElement = data[0];
+  
+        console.log("SETTING INITIAL ID");
+        setLayoutID(firstElement.id);
+        setHasLayout(true);
+  
+      }
+  
+  
+    }
+
+    const userInfo = async () =>{
+      const token_data = await getUserInfo();
+      setRestaurantID(token_data.restaurant);
+  }
+    
+    useEffect(() => {
+        userInfo();
+        checkLayouts();
+    }, [])
+    
+
+
+    
 
     return (
     <div>
-        <DropdownMenuParent setPosition={setPosition} setHasLayout={setHasLayout} hasLayout={hasLayout} setLayoutID={setLayoutID} layoutID={layoutID}/>
+        <DropdownMenuParent restaurantID={restaurantID} setHasLayout={setHasLayout} hasLayout={hasLayout} setLayoutID={setLayoutID} layoutID={layoutID} layoutList={layoutList} setLayoutList={setLayoutList}/>
         <div></div>
-        <DraggableBox style={stylesheet.draggable_box} setPosition={setPosition} position={position} hasLayout={hasLayout} layoutID={layoutID} />
+        <DraggableBox restaurantID={restaurantID} style={stylesheet.draggable_box}  hasLayout={hasLayout} layoutID={layoutID} />
         <div></div>
-        <SaveButton position={position} layoutID={layoutID} setLayoutID = {setLayoutID} hasLayout = {hasLayout} setHasLayout = {setHasLayout} />
+        <SaveButton restaurantID={restaurantID} layoutID={layoutID} setLayoutID = {setLayoutID} hasLayout = {hasLayout} setHasLayout = {setHasLayout} />
         <div></div>
-        <DeleteButton style={stylesheet.delete_button} hasLayout = {hasLayout} layoutID={layoutID} setHasLayout={setHasLayout} setPosition={setPosition} setLayoutID={setLayoutID} />
+        <DeleteButton restaurantID={restaurantID} style={stylesheet.delete_button} hasLayout = {hasLayout} layoutID={layoutID} setHasLayout={setHasLayout}  setLayoutID={setLayoutID} />
     </div>
   )
 }

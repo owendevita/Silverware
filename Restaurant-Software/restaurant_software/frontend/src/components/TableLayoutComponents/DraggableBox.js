@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Draggable from 'react-draggable'
 
-const DraggableBox = ( { style, setPosition, position, hasLayout, layoutID }) => {
+const DraggableBox = ( { style, hasLayout, layoutID }) => {
   
   let [loading, setLoading] = useState(true);
 
@@ -11,10 +11,7 @@ const DraggableBox = ( { style, setPosition, position, hasLayout, layoutID }) =>
 
 
   let getPosition = async () => {
-    
-    //
-    // TO-DO: MAKE RESTAURANT ID CHANGE DEPENDING ON USER'S ASSIGNED RESTAURANT
-    //
+
     if(!hasLayout || !layoutID || layoutID == null) {
      
       setPosition({x: 0, y: 0});

@@ -6,7 +6,7 @@ import { CDropdownItem } from '@coreui/react'
 const SelectLayoutButton = ({assignedLayoutID, setHasLayout, setLayoutID, layoutName}) => {
 
   const onClick = () => {
-
+    console.log(assignedLayoutID);
     setLayoutID(assignedLayoutID);
     setHasLayout(true);
   

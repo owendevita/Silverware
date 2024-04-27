@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DeleteButton = ({ style, hasLayout, layoutID, setHasLayout, restaurantID, setLayoutID }) => {
+const DeleteButton = ({ setLayoutList, style, hasLayout, layoutID, setHasLayout, restaurantID, setLayoutID }) => {
 
     const clickHandler = () => {
         if(hasLayout) {
@@ -8,9 +8,9 @@ const DeleteButton = ({ style, hasLayout, layoutID, setHasLayout, restaurantID, 
             
               let response = await fetch(`/api/restaurants/${restaurantID}/layouts/`);
               let data = await response.json();
-          
+              setLayoutList(data);
+
               if(!data || data.length == 0) {
-               
                 setHasLayout(false);
                 setLayoutID(null);
 
@@ -19,7 +19,6 @@ const DeleteButton = ({ style, hasLayout, layoutID, setHasLayout, restaurantID, 
                 setHasLayout(true);
               }
             });
-
     }
 }
 
