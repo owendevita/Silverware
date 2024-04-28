@@ -3,7 +3,10 @@ import ParentMenuCreator from './ParentMenuCreator'
 
 const MenuParent = () => {
     return (
-        <ParentMenuCreator />
+        <div>
+            <ParentMenuCreator />
+
+        </div>
     )
 }
 
