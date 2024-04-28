@@ -8,4 +8,5 @@ urlpatterns = [
     path('waitlist/', index),
     path('manage-employees/', index),
     path('menu/', index),
+    path('manage-menu', index),
 ]
