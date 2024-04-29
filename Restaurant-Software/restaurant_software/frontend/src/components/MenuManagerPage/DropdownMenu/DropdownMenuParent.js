@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem, CDropdownDivider } from '@coreui/react'
 import '@coreui/coreui/dist/css/coreui.min.css'
 import SelectMenuButton from './SelectMenuButton'
+import NewMenuButton from './NewMenuButton'
 
-const DropdownMenuParent = ({setHasMenu, setMenuID, map}) => {
+const DropdownMenuParent = ({setHasMenu, setMenuID, map, nameMap, setMap, setPopup, popup, hasMenu}) => {
    
     let [menuList, setMenuList] = useState([]);
 
@@ -28,8 +29,10 @@ const DropdownMenuParent = ({setHasMenu, setMenuID, map}) => {
             <CDropdownToggle color="secondary">Menus</CDropdownToggle>
                 <CDropdownMenu>
                     {menuList.map((menu) => (
-                        <SelectMenuButton assignedMenuID={menu.id} setHasMenu={setHasMenu} setMenuID={handleMenuSelection} map={map} />
+                        <SelectMenuButton assignedMenuID={menu.id} setHasMenu={setHasMenu} setMenuID={handleMenuSelection} nameMap={nameMap} />
                     ))}
+                    {hasMenu && <CDropdownDivider />}
+                    <NewMenuButton map={map} setMap={setMap} setHasMenu={setHasMenu} setMenuID={setMenuID} setPopup={setPopup} popup={popup}/>
                 </CDropdownMenu>
       </CDropdown>
     )
