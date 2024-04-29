@@ -24,7 +24,6 @@ const SaveButton = ( { layoutID, setLayoutID, hasLayout, setHasLayout, restauran
     });
     
   } else {
-      console.log(positionMap.get(layoutID));
       let response = await fetch(`/api/layouts/${layoutID}/`);
       let data = await response.json();
       

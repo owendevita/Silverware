@@ -107,6 +107,7 @@
     width: 100%;
     max-width: 640px;
     background-color: #493843;
+    z-index: 9999;
 }
 
 .popup-labels {

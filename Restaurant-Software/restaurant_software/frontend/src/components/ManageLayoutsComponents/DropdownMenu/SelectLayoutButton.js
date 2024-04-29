@@ -3,13 +3,13 @@ import React from 'react'
 import { CDropdownItem } from '@coreui/react'
 
 
-const SelectLayoutButton = ({assignedLayoutID, setHasLayout, setLayoutID, layoutName}) => {
+const SelectLayoutButton = ({ setCurrentLayoutName, assignedLayoutID, setHasLayout, setLayoutID, layoutName, setCurrentFocusedComponent}) => {
 
   const onClick = () => {
-    console.log(assignedLayoutID);
     setLayoutID(assignedLayoutID);
     setHasLayout(true);
-  
+    setCurrentFocusedComponent({layoutID: null, index: null});
+    setCurrentLayoutName(layoutName);
   }
 
   return (

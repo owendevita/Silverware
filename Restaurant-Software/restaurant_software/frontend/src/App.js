@@ -5,7 +5,7 @@ import faviconUrl from '../static/assets/favicon.ico'
 
 // Pages and Components
 import MainPage from './pages/MainPage';
-import TablesPage from './pages/TablesPage';
+import ManageLayoutsPage from './pages/ManageLayoutsPage';
 import LoginPage from './pages/LoginPage';
 import WaitlistPage from './pages/WaitlistPage';
 import EmployeeCreationPage from './pages/EmployeeCreationPage'
@@ -30,10 +30,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route
-          path="/tables"
+          path="/manage-layouts"
           element={
             <SecureRouter requiredPermissions={["host", "waiter", "chef", "manager", "owner"]}> 
-              <TablesPage/>
+              <ManageLayoutsPage/>
             </SecureRouter>}
         />
 
