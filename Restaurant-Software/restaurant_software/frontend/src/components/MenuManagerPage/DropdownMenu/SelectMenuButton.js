@@ -3,7 +3,7 @@ import React from 'react'
 import { CDropdownItem } from '@coreui/react'
 
 
-const SelectMenuButton = ({assignedMenuID, setHasMenu, setMenuID, map}) => {
+const SelectMenuButton = ({assignedMenuID, setHasMenu, setMenuID, nameMap}) => {
 
   const handleClick = () => {
 
@@ -13,7 +13,7 @@ const SelectMenuButton = ({assignedMenuID, setHasMenu, setMenuID, map}) => {
   }
 
   return (
-    <CDropdownItem as="button" onClick={handleClick}> {map.get(assignedMenuID)} </CDropdownItem>
+    <CDropdownItem as="button" onClick={handleClick}> {nameMap.get(assignedMenuID)} </CDropdownItem>
   )
 }
 

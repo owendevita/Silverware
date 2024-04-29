@@ -1,11 +1,11 @@
 import React from 'react'
-//import ManageMenuParent ...
+import MenuManagerParent from '../components/MenuManagerPage/MenuManagerParent'
 
 
 const ManageMenuPage = () => {
   return (
     <div>
-      
+      <MenuManagerParent />
     </div>
   )
 }
