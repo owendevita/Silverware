@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage';
 import WaitlistPage from './pages/WaitlistPage';
 import EmployeeCreationPage from './pages/EmployeeCreationPage'
 import RestaurantManagementPage from './pages/RestaurantManagementPage'
+import MenuPage from './pages/MenuPage'
 
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
   
   return (
     <Router>
+
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route
@@ -55,7 +57,7 @@ export default function App() {
               <EmployeeCreationPage/>
             </SecureRouter>}
         />
-
+        <Route path="/menu" component={MenuPage} />
       </Routes>
     </Router>
   );
