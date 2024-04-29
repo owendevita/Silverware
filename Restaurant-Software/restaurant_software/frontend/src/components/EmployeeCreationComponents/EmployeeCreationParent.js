@@ -19,7 +19,8 @@ const EmployeeCreationParent = () => {
 
     return restaurantID ? (
         <div>
-          <CreateButton restaurantID={restaurantID}/>
+          <h1 className="page-title">Manage Employees</h1>
+          <CreateButton  restaurantID={restaurantID}/>
           <EmployeeCreator restaurantID={restaurantID} />
         </div>
       ) : (

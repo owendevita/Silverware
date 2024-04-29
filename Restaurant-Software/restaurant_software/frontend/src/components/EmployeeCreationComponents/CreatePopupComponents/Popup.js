@@ -21,25 +21,30 @@ const Popup = ({setPopup, restaurantID}) => {
   return (
     <div className='popup-outer'>
         <div className="popup-inner">
-          <label>Create Employee</label>
-            <CloseButton setPopup={setPopup}/>
-            <Name setName={setFirstName} label={"First Name"}/>
-            <Name setName={setLastName} label={"Last Name"}/>
-            <EmployeeID setEmployeeID={setEmployeeID}/>
-            <Password setPassword={setPassword}/>
-            <label className="popup-labels">Permissions:</label>
-            <Permission setPermission={setManager} label={"Manager"}/> <Permission setPermission={setServer} label={"Server"}/> <Permission setPermission={setHost} label={"Host"}/> <Permission setPermission={setChef} label={"Chef"}/>
-            <SubmitButton
-              firstName={firstName}
-              lastName={lastName}
-              passwordValue={password}
-              employeeID={employeeID}
-              isManager={manager}
-              isServer={server}
-              isHost={host}
-              isChef={chef}
-              restaurantID={restaurantID}
-              />
+          <label className="popup-titles">Create Employee</label>
+          <CloseButton setPopup={setPopup}/>
+          <Name setName={setFirstName} label={"First Name"}/>
+          <Name setName={setLastName} label={"Last Name"}/>
+          <EmployeeID setEmployeeID={setEmployeeID}/>
+          <Password setPassword={setPassword}/>
+          <label className="permission-title">Permissions</label>
+          <div className="permission-organizer">
+            <Permission className={"permission-item"} setPermission={setManager} label={"Manager"}/> 
+            <Permission className={"permission-item"} setPermission={setServer} label={"Server"}/> 
+            <Permission className={"permission-item"} setPermission={setHost} label={"Host"}/> 
+            <Permission className={"permission-item"} setPermission={setChef} label={"Chef"}/>
+          </div>
+          <SubmitButton
+            firstName={firstName}
+            lastName={lastName}
+            passwordValue={password}
+            employeeID={employeeID}
+            isManager={manager}
+            isServer={server}
+            isHost={host}
+            isChef={chef}
+            restaurantID={restaurantID}
+            />
         </div>
     </div>
   )

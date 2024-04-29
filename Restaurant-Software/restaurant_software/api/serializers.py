@@ -29,4 +29,4 @@ class OrderSerializer(serializers.ModelSerializer):
 class RestaurantLayoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = RestaurantLayout
-        fields = ['id', 'restaurant', 'position']
+        fields = ['id', 'restaurant', 'layout', 'name']

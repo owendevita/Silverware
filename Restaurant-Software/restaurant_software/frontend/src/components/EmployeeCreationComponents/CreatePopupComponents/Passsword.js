@@ -8,7 +8,7 @@ const Passsword = ({setPassword}) => {
   
     return (
         <div>
-            <label className="popup-labels">Passsword:</label>
+            <label className="popup-labels">Password:</label>
             <input className="popup-inputs" type="password" onChange={handleChange}/>
         </div>
   )

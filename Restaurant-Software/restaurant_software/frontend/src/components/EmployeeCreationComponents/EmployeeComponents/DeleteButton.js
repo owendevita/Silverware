@@ -13,7 +13,7 @@ const DeleteButton = ({pk, restaurantID, setList}) => {
 
   
   return (
-    <button onClick={handleClick}>Delete</button>
+    <button className="employee-delete-button" onClick={handleClick}>Delete</button>
   )
 }
 
