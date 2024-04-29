@@ -1,4 +1,4 @@
-![SILVERWARE_LOGO](https://github.com/owendevita/Silverware/assets/71471295/19024ae7-b07f-43ce-bdb9-be4710e5ba31)
+<img src="https://github.com/owendevita/Silverware/assets/71471295/19024ae7-b07f-43ce-bdb9-be4710e5ba31" width="60%">
 
 Silverware is a restaurant management software with the following functionality:
 - Waitlist management for hosts.
