@@ -6,11 +6,13 @@ import faviconUrl from '../static/assets/favicon.ico'
 // Pages and Components
 import MainPage from './pages/MainPage';
 import ManageLayoutsPage from './pages/ManageLayoutsPage';
+import ViewLayoutsPage from './pages/ViewLayoutsPage';
 import LoginPage from './pages/LoginPage';
 import WaitlistPage from './pages/WaitlistPage';
 import EmployeeCreationPage from './pages/EmployeeCreationPage'
 import RestaurantManagementPage from './pages/RestaurantManagementPage'
 import MenuPage from './pages/MenuPage'
+import SettingsPage from './pages/SettingsPage'
 
 
 export default function App() {
@@ -34,8 +36,24 @@ export default function App() {
         <Route
           path="/manage-layouts"
           element={
-            <SecureRouter requiredPermissions={["host", "waiter", "chef", "manager", "owner"]}> 
+            <SecureRouter requiredPermissions={["host", "server", "chef", "manager", "owner"]}> 
               <ManageLayoutsPage/>
+            </SecureRouter>}
+        />
+
+        <Route
+          path="/layouts"
+          element={
+            <SecureRouter requiredPermissions={["host", "server", "chef", "manager", "owner"]}> 
+              <ViewLayoutsPage/>
+            </SecureRouter>}
+        />
+
+        <Route
+          path="/settings"
+          element={
+            <SecureRouter requiredPermissions={["host", "server", "chef", "manager", "owner"]}> 
+              <SettingsPage/>
             </SecureRouter>}
         />
 

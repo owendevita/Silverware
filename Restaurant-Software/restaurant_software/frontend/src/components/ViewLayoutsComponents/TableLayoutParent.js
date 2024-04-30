@@ -1,16 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import DraggableBox from './DraggableBox'
-import SaveButton from './SaveButton'
-import DeleteButton from './DeleteButton'
-import CreateTableButton from './CreateTableButton'
-import CreateWallButton from './CreateWallButton'
 import DropdownMenuParent from './DropdownMenu/DropdownMenuParent'
 import { getUserInfo } from '../../services/userService';
-import CreatePopup from './CreateLayoutPopupComponents/Popup'
-import EditPopup from './EditPopupComponents/Popup'
-import EditButton from './EditButton'
-import CreateLabelButton from './CreateLabelButton'
-import DeleteComponent from './DeleteComponent'
 
 const stylesheet = {
   delete_button: {
@@ -40,9 +31,8 @@ const Parent = () => {
     let [hasLayout, setHasLayout] = useState(false);
     let [layoutList, setLayoutList] = useState([]);
     let [positionMap, setPositionMap] = useState(new Map());
-    let [createLayoutPopup, setCreateLayoutPopup] = useState(false);
-    let [editPopup, setEditPopup] = useState(false);
     let [currentFocusedComponent, setCurrentFocusedComponent] = useState({layoutID: null, index: null});
+    let [info, setInfo] = useState(null);
 
     const [restaurantID, setRestaurantID] = useState(null);
 
@@ -82,35 +72,19 @@ const Parent = () => {
     useEffect(() => {
       checkLayouts();
     }, [restaurantID])
+
+    useEffect(() => {
+      if(currentFocusedComponent != undefined && currentFocusedComponent != null && currentFocusedComponent.index != null){
+          setInfo(positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index])
+      }
+    }, [currentFocusedComponent])
     
     return layoutID ? (
     <div style={stylesheet.mainDiv}>
-        <DropdownMenuParent setCurrentFocusedComponent={setCurrentFocusedComponent} positionMap={positionMap} setPositionMap={setPositionMap} restaurantID={restaurantID} setHasLayout={setHasLayout} hasLayout={hasLayout} setLayoutID={setLayoutID} layoutID={layoutID} layoutList={layoutList} setLayoutList={setLayoutList} createLayoutPopup={createLayoutPopup} setCreateLayoutPopup={setCreateLayoutPopup}/>
-        {createLayoutPopup && <CreatePopup restaurantID={restaurantID} setLayoutList={setLayoutList} setHasLayout={setHasLayout} setLayoutID={setLayoutID} setPositionMap={setPositionMap} positionMap={positionMap} setCreateLayoutPopup={setCreateLayoutPopup} createLayoutPopup={createLayoutPopup} layoutID={layoutID}/>}
-        {hasLayout && 
-        <div>
-          <CreateTableButton setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>
-          <CreateWallButton setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>
-          <CreateLabelButton setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>
-        </div>}
-        <SaveButton positionMap={positionMap} restaurantID={restaurantID} layoutID={layoutID} setLayoutID = {setLayoutID} hasLayout = {hasLayout} setHasLayout = {setHasLayout} />
-        <DeleteButton setCurrentFocusedComponent={setCurrentFocusedComponent} setLayoutList={setLayoutList} restaurantID={restaurantID} style={stylesheet.delete_button} hasLayout = {hasLayout} layoutID={layoutID} setHasLayout={setHasLayout}  setLayoutID={setLayoutID} />
-        {(currentFocusedComponent.index != null && (
-        positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].type == 'booth' ||
-        positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].type == 'table' ||
-        positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].type == 'label-clear' ||
-        positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].type == 'label-filled'
-        )
-        ) && 
-            <EditButton positionMap={positionMap} currentFocusedComponent={currentFocusedComponent} setEditPopup={setEditPopup} />
-         }
-        {(currentFocusedComponent.index != null) && 
-            <DeleteComponent style={stylesheet.delete_button} currentFocusedComponent={currentFocusedComponent} setCurrentFocusedComponent={setCurrentFocusedComponent} positionMap={positionMap} setPositionMap={setPositionMap} />
-          }
-
-        {editPopup && <EditPopup setCurrentFocusedComponent={setCurrentFocusedComponent} positionMap={positionMap} setPositionMap={setPositionMap} currentFocusedComponent={currentFocusedComponent} setPopup={setEditPopup} />}
+        <DropdownMenuParent setCurrentFocusedComponent={setCurrentFocusedComponent} positionMap={positionMap} setPositionMap={setPositionMap} restaurantID={restaurantID} setHasLayout={setHasLayout} hasLayout={hasLayout} setLayoutID={setLayoutID} layoutID={layoutID} layoutList={layoutList} setLayoutList={setLayoutList}/>
+        {((currentFocusedComponent != undefined && currentFocusedComponent != null && currentFocusedComponent.index != null && info != null && info.type != null) && (info.type == "booth" || info.type == "table")) && <label>Seats: {info.seats}</label>}
+        {((currentFocusedComponent != undefined && currentFocusedComponent != null && currentFocusedComponent.index != null && info != null && info.type != null) && (info.type == "booth" || info.type == "table")) && <label>Table Number: {info.table_number}</label>}
         <div style={stylesheet.box} >
-          
           {hasLayout && positionMap.get(layoutID).length > 0 && positionMap.get(layoutID).map((data, index) => (
             (data.type == 'back-wall') ? (   
             <DraggableBox labelInfo={null} key={index} index={index} currentFocusedComponent={currentFocusedComponent} setCurrentFocusedComponent={setCurrentFocusedComponent} x_position={data.x} y_position={data.y} type={data.type} tableNumber={data.table_number} seats={data.seats} setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>
@@ -140,13 +114,11 @@ const Parent = () => {
             <DraggableBox labelInfo={data.label_content} key={index} index={index} currentFocusedComponent={currentFocusedComponent} setCurrentFocusedComponent={setCurrentFocusedComponent} x_position={data.x} y_position={data.y} type={data.type} tableNumber={data.table_number} seats={data.seats} setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>
             ) : (null)
           ))}
-          
         </div>
     </div>
   ) : (
     <div style={stylesheet.mainDiv}>
-      <DropdownMenuParent positionMap={positionMap} setPositionMap={setPositionMap} restaurantID={restaurantID} setHasLayout={setHasLayout} hasLayout={hasLayout} setLayoutID={setLayoutID} layoutID={layoutID} layoutList={layoutList} setLayoutList={setLayoutList} createLayoutPopup={createLayoutPopup} setCreateLayoutPopup={setCreateLayoutPopup}/>
-      {createLayoutPopup && <CreatePopup restaurantID={restaurantID} setLayoutList={setLayoutList} setHasLayout={setHasLayout} setLayoutID={setLayoutID} setPositionMap={setPositionMap} positionMap={positionMap} setCreateLayoutPopup={setCreateLayoutPopup} createLayoutPopup={createLayoutPopup} layoutID={layoutID}/>}
+      There are no layouts to view.
     </div>
   )
 }
