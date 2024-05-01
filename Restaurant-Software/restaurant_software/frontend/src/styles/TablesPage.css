@@ -9,7 +9,7 @@
     flex-grow: 1;
 }
 .boothImage {
-    max-width: 5%;
+    max-width: 6%;
     height: auto;
     user-select: none;
     position: absolute;
@@ -95,6 +95,8 @@
     text-align: center;
     max-width: 5%;
     max-height: auto;
+    background-color: transparent;
+    border: none;
 }
 
 .draggableBoxGrabbing {

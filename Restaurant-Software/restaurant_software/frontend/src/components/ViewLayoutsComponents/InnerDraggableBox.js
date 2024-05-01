@@ -9,7 +9,8 @@ const stylesheet = {
   button: {
     border: 'none',
     minWidth: '100%',
-    minHeight: '100%'
+    minHeight: '100%',
+    backgroundColor: 'transparent'
   }
 };
 
