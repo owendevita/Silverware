@@ -38,9 +38,11 @@ const EmployeeCreator = ({restaurantID}) => {
     
 
     return (
-        <div>
+        <div className="employee-container">
             {list.map((data) => (
-                <Employee key={data.id} first_name={data.first_name} last_name={data.last_name} employee_id={data.employee_id} permissions={data.permissions} pk={data.id} setList={setList} restaurantID={restaurantID}/>
+                <div className="employee-box">
+                    <Employee key={data.id} first_name={data.first_name} last_name={data.last_name} employee_id={data.employee_id} permissions={data.permissions} pk={data.id} setList={setList} restaurantID={restaurantID}/>
+                </div>
         ))}
         </div>
   )

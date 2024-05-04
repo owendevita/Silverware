@@ -1,6 +1,6 @@
 import React from 'react'
 import EmployeeCreationParent from '../components/EmployeeCreationComponents/EmployeeCreationParent'
-import EMployeeCreationPage from '../styles/EmployeeCreationPage.css'
+import ManagementPages from '../styles/ManagementPages.css'
 
 const EmployeeCreationPage = () => {
   return (

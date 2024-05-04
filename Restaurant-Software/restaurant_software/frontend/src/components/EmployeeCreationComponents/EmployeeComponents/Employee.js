@@ -19,11 +19,11 @@ const Employee = ({first_name, last_name, employee_id, permissions, pk, setList,
 
   
     return (
-    <div>
-        <div>First Name: {first_name}</div>
-        <div>Last Name: {last_name}</div>
-        <div>Employee ID: {employee_id}</div>
-        <div>Permissions: {permissionString}</div>
+    <div className="inner-box">
+        <label className="box-title-label">First Name: </label> <label className="box-content-label">{first_name}</label>
+        <label className="box-title-label">Last Name: </label> <label className="box-content-label">{last_name}</label>
+        <label className="box-title-label">Employee ID: </label> <label className="box-content-label">{employee_id}</label>
+        <label className="box-title-label">Permissions: </label> <label className="box-content-label">{permissionString}</label>
         <EditButton pk={pk}/> <DeleteButton pk={pk} setList={setList} restaurantID={restaurantID}/> 
     </div>
   )

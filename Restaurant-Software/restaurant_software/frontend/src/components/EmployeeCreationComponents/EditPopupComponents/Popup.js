@@ -51,14 +51,19 @@ const Popup = ({setPopup, pk}) => {
   return (
     <div className='popup-outer'>
         <div className="popup-inner">
-            <label>Edit Employee</label>
+            <label className="popup-titles">Edit Employee</label>
             <CloseButton setPopup={setPopup}/>
             <Name name={firstName} setName={setFirstName} label={"First Name"}/>
             <Name name={lastName} setName={setLastName} label={"Last Name"}/>
             <EmployeeID employeeID={employeeID} setEmployeeID={setEmployeeID}/>
             <Password setPassword={setPassword}/>
-            <label className="popup-labels">Permissions:</label>
-            <Permission checked={manager} setPermission={setManager} label={"Manager"}/> <Permission checked={server} setPermission={setServer} label={"Server"}/> <Permission checked={host} setPermission={setHost} label={"Host"}/> <Permission checked={chef} setPermission={setChef} label={"Chef"}/>
+            <label className="permission-title">Permissions</label>
+            <div className="permission-organizer">
+              <Permission className={"permission-item"} checked={manager} setPermission={setManager} label={"Manager"}/> 
+              <Permission className={"permission-item"} checked={server} setPermission={setServer} label={"Server"}/> 
+              <Permission className={"permission-item"} checked={host} setPermission={setHost} label={"Host"}/> 
+              <Permission className={"permission-item"} checked={chef} setPermission={setChef} label={"Chef"}/>
+            </div>
             <SubmitButton
               firstName={firstName}
               lastName={lastName}
