@@ -1,31 +1,23 @@
 import React from 'react'
 
-const DeleteMenuButton = ({ style, hasMenu, menuID, setHasMenu, setMenuID }) => {
-
-    const clickHandler = () => {
-        if(hasMenu) {
-            fetch(`/api/restaurants/${menuID}/menus/`, {method: 'DELETE'}).then( async () => {
-            
-              let response = await fetch('/api/restaurants/1/menus/');
-              let data = await response.json();
-          
-              if(!data || data.length == 0) {
-               
-                setHasMenu(false);
-                setMenuID(null);
-
-              } else {
-                setMenuID(data[0].id);
-                setHasMenu(true);
-              }
-            });
-
+const DeleteButton = ({menuID, setMenuID}) => {
+  
+  const handleClick = async () => {
+    const deleteMethod = await fetch(`/api/menus/${menuID}`, {method: 'DELETE'}).then( async () => {
+        let response = await fetch(`/api/restaurants/1/menus/`, {method: 'GET'});
+        let data = await response.json();
+        if (data.length > 0) {
+          setMenuID(data[0].id);
+        } else {
+          setMenuID(null);
+        }
+        window.location.reload();
+      });
     }
-}
-
+  
   return (
-    <button onClick={clickHandler} style={style}>Delete Menu</button>
+    <button onClick={handleClick}>Delete Menu</button>
   )
 }
 
-export default DeleteMenuButton
+export default DeleteButton
