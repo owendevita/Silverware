@@ -4,15 +4,13 @@ import TableLayoutParent from '../components/ViewLayoutsComponents/TableLayoutPa
 
 const stylesheet = {
   mainDiv:{
-    overflow: 'hidden',
-    width: `100vw`,
-    height: `100vh` 
+    overflow: 'hidden'
   }
 };
 
 const MainPage = () => {
   return (
-    <div style={stylesheet.mainDiv}>
+    <div style={stylesheet.mainDiv} className="page">
       <TableLayoutParent />
     </div>
   )

@@ -1,8 +1,12 @@
 import React from 'react'
+import LogoutButton from './LogoutButton'
 
 const SettingsParent = () => {
   return (
-    <div>SettingsParent</div>
+    <div>
+      <h1>Settings</h1>
+      <LogoutButton />
+    </div>
   )
 }
 

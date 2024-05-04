@@ -3,7 +3,7 @@ import SettingsParent from '../components/SettingsComponents/SettingsParent'
 
 const SettingsPage = () => {
   return (
-    <div >
+    <div className="page">
       <SettingsParent /> 
     </div>
   )

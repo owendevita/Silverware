@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SecureRouter from './components/SecureRouter';
+import Navbar from './components/NavBar';
 import faviconUrl from '../static/assets/favicon.ico'
+import '../src/styles/Page.css'
 
 // Pages and Components
 import MainPage from './pages/MainPage';
@@ -30,13 +32,20 @@ export default function App() {
   
   return (
     <Router>
-
+      {window.location.pathname != "/login/" && <Navbar />}
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route
+          path="/"
+          element={
+            <SecureRouter requiredPermissions={["host", "server", "chef", "manager", "owner"]}> 
+              <MainPage />
+            </SecureRouter>}
+        />
+
         <Route
           path="/manage-layouts"
           element={
-            <SecureRouter requiredPermissions={["host", "server", "chef", "manager", "owner"]}> 
+            <SecureRouter requiredPermissions={["manager", "owner", "host"]}> 
               <ManageLayoutsPage/>
             </SecureRouter>}
         />
@@ -44,7 +53,7 @@ export default function App() {
         <Route
           path="/layouts"
           element={
-            <SecureRouter requiredPermissions={["host", "server", "chef", "manager", "owner"]}> 
+            <SecureRouter requiredPermissions={["host", "server", "manager", "owner"]}> 
               <ViewLayoutsPage/>
             </SecureRouter>}
         />
