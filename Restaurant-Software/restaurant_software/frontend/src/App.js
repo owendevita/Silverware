@@ -6,6 +6,8 @@ import MainPage from './pages/MainPage'
 import TablesPage from './pages/TablesPage'
 import LoginPage from './pages/LoginPage'
 import WaitlistPage from './pages/WaitlistPage'
+import ChefPage from './pages/ChefPage'
+import OrderPage from './pages/OrderPage'
 
 export default function App() {
   return (
@@ -15,6 +17,8 @@ export default function App() {
         <Route path="/tables" component={TablesPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/waitlist" component={WaitlistPage} />
+        <Route path="/orders" component={ChefPage} />
+        <Route path="/create-order" component={OrderPage} />
       </div>
     </Router>
   )
