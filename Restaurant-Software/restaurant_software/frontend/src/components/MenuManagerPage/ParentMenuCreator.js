@@ -4,7 +4,9 @@ import DropdownMenuParent from './DropdownMenu/DropdownMenuParent';
 import Popup from './CreateMenuPopupComponents/Popup';
 import DeleteMenuButton from './DeleteButton'
 import ItemPopup from './CreateItemPopupComponents/ItemPopup';
+import CategoryPopup from './CreateCategoryPopupComponents/Popup';
 import CreateItemButton from './CreateItemButton';
+import CreateCategoryButton from './CreateCategoryButton'
 
 const ParentMenuCreator = ({menuID, setMenuID}) => {
 
@@ -13,6 +15,7 @@ const ParentMenuCreator = ({menuID, setMenuID}) => {
     let [hasMenu, setHasMenu] = useState(false);
     const [popup, setPopup] = useState(false);
     const [itemPopup, setItemPopup] = useState(false);
+    const [categoryPopup, setCategoryPopup] = useState(false);
 
 
 
@@ -39,8 +42,11 @@ const ParentMenuCreator = ({menuID, setMenuID}) => {
           setNameMap(newNameMap);
           if (data.length > 0) {
             setMenuID(data[0].id);
+            setHasMenu(true);
+          } else {
+            setHasMenu(false);
           }
-          setHasMenu(true);
+          
         }
     }
 
@@ -48,12 +54,15 @@ const ParentMenuCreator = ({menuID, setMenuID}) => {
     <div>
       <DropdownMenuParent setHasMenu={setHasMenu} setMenuID={setMenuID} map={map} nameMap={nameMap} setMap={setMap} setPopup={setPopup} popup={popup} hasMenu={hasMenu}/>
       {map.get(menuID).map((data, index) => (
-        <CategoryCreator categories={data} index={index}/>
+        <CategoryCreator categories={data} index={index} menuID={menuID}/>
           ))}
           {popup && <Popup setPopup={setPopup}/>}
+          <CreateItemButton setPopup={setItemPopup} popup={itemPopup}/>
+          <CreateCategoryButton setPopup={setCategoryPopup} popup={categoryPopup}/>
           <DeleteMenuButton hasMenu={hasMenu} menuID={menuID} setHasMenu={setHasMenu} setMenuID={setMenuID} />
           {itemPopup && <ItemPopup map={map} setPopup={setItemPopup} menuID={menuID}/>}
-          <CreateItemButton setPopup={setItemPopup} popup={itemPopup}/>
+          {categoryPopup && <CategoryPopup map={map} setPopup={setItemPopup} menuID={menuID}/>}
+         
     </div>
   ) : (
     <div>

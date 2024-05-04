@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Category = ({label, setCategory}) => {
+const Category = ({label, setCategory, category}) => {
 
     const handleChange = (event) => {
         setCategory(label);
@@ -9,7 +9,7 @@ const Category = ({label, setCategory}) => {
     return (
         <div>
             <label className="popup-labels">{label}:</label>
-            <input type="radio" className="popup-inputs" onChange={handleChange}></input>
+            <input type="radio" className="popup-inputs" checked={category == label} onChange={handleChange}></input>
         </div>
   )
 }

@@ -3,7 +3,6 @@ import ParentMenuCreator from './ParentMenuCreator'
 
 const MenuManagerParent = () => {
     let [menuID, setMenuID] = useState(null);
-    let [hasMenu, setHasMenu] = useState(false);
 
     return (
         <div>

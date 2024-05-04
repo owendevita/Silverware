@@ -26,17 +26,18 @@ const ParentMenuCreator = () => {
           const newMap = new Map(map)
           const newNameMap = new Map(nameMap)
           for(let i = 0; i < data.length; i++){
-            console.log("id: ", data[i].id);
-            console.log("items: ", data[i].items);
             newMap.set(data[i].id, data[i].items);
-            console.log("RAHHHH: ", data[i].name)
             newNameMap.set(data[i].id, data[i].name);
           }
           setMap(newMap);
           setNameMap(newNameMap);
-          console.log("setdataid: ", data[0].id)
-          setMenuID(data[1].id);
-          setHasMenu(true);
+          if(data.length > 0){
+            setMenuID(data[0].id);
+            setHasMenu(true);
+          } else {
+            setHasMenu(false);
+          }
+          
         }
     }
 

@@ -59,7 +59,7 @@ export default function App() {
             </SecureRouter>}
         />
         <Route path="/menu" element= {<MenuPage/>} />
-        <Route path="/manage-menu" element= {<ManageMenuPage/>} />
+        <Route path="/manage-menus" element= {<ManageMenuPage/>} />
       </Routes>
     </Router>
   );

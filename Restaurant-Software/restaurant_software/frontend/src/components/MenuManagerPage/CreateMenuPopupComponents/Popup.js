@@ -10,7 +10,7 @@ const Popup = ({setPopup, restaurantID}) => {
   return (
     <div className='popup-outer'>
         <div className="popup-inner">
-          <label>Create Menu</label>
+          <label className="popup-titles">Create Menu</label>
             <CloseButton setPopup={setPopup}/>
             <Name setName={setName} label={"Name"}/>
             <SubmitButton

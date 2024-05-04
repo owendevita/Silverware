@@ -1,37 +1,31 @@
 import React from 'react'
 
-const SubmitButton = ({name}) => {
+const SubmitButton = ({name, menuID}) => {
 
   const handleClick = async() =>{
-      fetch('/api/create/menu/', {
-        method: 'POST',
-        headers: {  
-        'Content-Type': 'application/json'
-      },
-        body: JSON.stringify({
-          name: name,
-          items: [],
-          restaurant: 1 // TO-DO: MAKE THIS USER'S RESTAURANT ID
-        })
-      })
-      .then(response => {
-        if (!response.ok) {
-            console.log('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        window.location.reload()
-    })
-    .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
+    let response = await fetch(`/api/menus/${menuID}`, {method: 'GET'});
+    let data = await response.json();
+
+    let newCategory ={
+      category: {"name" : name,
+      "items": []}
+    }
+    data.items = data.items.concat(newCategory);
+
+    fetch(`/api/menus/${menuID}/`, {
+      method: 'PUT',
+      headers: {  
+      'Content-Type': 'application/json'
+    },
+      body: JSON.stringify({name: data.name, restaurant: data.restaurant, items: data.items})
     });
 
+    window.location.reload();
 
   }
   
   return (
-    <button className="popup-buttons" onClick={handleClick}>Create new menu</button>
+    <button className="popup-buttons" onClick={handleClick}>Create New Category</button>
   )
 }
 
