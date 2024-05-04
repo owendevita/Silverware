@@ -3,6 +3,8 @@ import CategoryCreator from './CategoryCreator'
 import DropdownMenuParent from './DropdownMenu/DropdownMenuParent';
 import Popup from './CreateMenuPopupComponents/Popup';
 import DeleteMenuButton from './DeleteButton'
+import ItemPopup from './CreateItemPopupComponents/ItemPopup';
+import CreateItemButton from './CreateItemButton';
 
 const ParentMenuCreator = ({menuID, setMenuID}) => {
 
@@ -10,6 +12,8 @@ const ParentMenuCreator = ({menuID, setMenuID}) => {
     let [nameMap, setNameMap] = useState(new Map());
     let [hasMenu, setHasMenu] = useState(false);
     const [popup, setPopup] = useState(false);
+    const [itemPopup, setItemPopup] = useState(false);
+
 
 
     useEffect(() => {
@@ -48,6 +52,8 @@ const ParentMenuCreator = ({menuID, setMenuID}) => {
           ))}
           {popup && <Popup setPopup={setPopup}/>}
           <DeleteMenuButton hasMenu={hasMenu} menuID={menuID} setHasMenu={setHasMenu} setMenuID={setMenuID} />
+          {itemPopup && <ItemPopup map={map} setPopup={setItemPopup} menuID={menuID}/>}
+          <CreateItemButton setPopup={setItemPopup} popup={itemPopup}/>
     </div>
   ) : (
     <div>

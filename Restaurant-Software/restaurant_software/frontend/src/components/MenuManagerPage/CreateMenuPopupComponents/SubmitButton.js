@@ -31,7 +31,7 @@ const SubmitButton = ({name}) => {
   }
   
   return (
-    <button className="popup-buttons" onClick={handleClick}>Create new menu</button>
+    <button className="popup-buttons" onClick={handleClick}>Create New Menu</button>
   )
 }
 

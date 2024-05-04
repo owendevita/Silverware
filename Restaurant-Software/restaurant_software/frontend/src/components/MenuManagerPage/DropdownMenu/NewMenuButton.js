@@ -10,7 +10,7 @@ const NewMenuButton = ( {map, setMap, setHasMenu, setMenuID, setPopup, popup} ) 
     
     return (
         <div>
-            <CDropdownItem as="button" onClick={handleClick}>Create new menu</CDropdownItem>
+            <CDropdownItem as="button" onClick={handleClick}>Create New Menu</CDropdownItem>
         </div>
       )
 }
