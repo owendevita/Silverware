@@ -2,10 +2,9 @@ import React, { useEffect } from 'react'
 import MenuCreator from './MenuCreator'
 
 
-const CategoryCreator = ({categories}) => {
+const CategoryCreator = ({categories, index}) => {
 
     useEffect(() => {
-        console.log("categoriestest: ", categories);
       }, []);
 
   return (

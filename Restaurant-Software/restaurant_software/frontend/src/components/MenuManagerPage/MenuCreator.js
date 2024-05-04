@@ -4,13 +4,12 @@ import MenuItem from './MenuItem'
 const MenuCreator = ({items}) => {
 
   useEffect(() => {
-    console.log("itemstest: ", items);
   }, []);
     
     return (
     <div>
-       {items.map((data) => (
-          <MenuItem name={data.name} price={data.item_price} />
+       {items.map((data, index) => (
+          <MenuItem name={data.name} price={data.item_price} index={index} />
         ))}
     </div>
   )
