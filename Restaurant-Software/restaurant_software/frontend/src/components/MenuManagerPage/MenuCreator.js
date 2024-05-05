@@ -6,13 +6,24 @@ const MenuCreator = ({items, menuID, categoryIndex}) => {
   useEffect(() => {
   }, []);
     
-    return (
+  return (
     <div>
-       {items.map((data, index) => (
-          <MenuItem categoryIndex={categoryIndex} name={data.name} menuID={menuID} price={data.item_price} index={index} />
-        ))}
+      {items.map((data, index) => {
+        console.log("Data:", data);
+        console.log("Index:", index);
+        return (
+          <MenuItem
+            categoryIndex={categoryIndex}
+            name={data.name}
+            menuID={menuID}
+            price={data.item_price}
+            index={index}
+            key={index} // Key should be added when using map to render a list of elements
+          />
+        );
+      })}
     </div>
-  )
+  );
 }
 
 export default MenuCreator

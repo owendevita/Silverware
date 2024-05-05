@@ -64,7 +64,7 @@ const CategoryCreator = ({categories, index, menuID}) => {
             <button onClick={handleDeleteClick}>Delete</button>
             <button onClick={handleMoveUpClick}>↑</button>
             <button onClick={handleMoveDownClick}>↓</button>
-            <MenuCreator index={index} items={categories.category.items} menuID={menuID}/>
+            <MenuCreator categoryIndex={index} items={categories.category.items} menuID={menuID}/>
           </div>
     
   )
