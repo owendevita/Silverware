@@ -1,0 +1,47 @@
+.new-component-button {
+    background-color: #493843;
+    color: #CBBFBB;
+    border-color: #CBBFBB;
+}
+
+.edit-button {
+    background-color: #EABDA8;
+    color: black;
+    border-color: black;
+}
+
+.layout-container {
+    overflow: hidden;
+    width: 90%;
+    height: 82.5%;
+    border: 0.5em solid #493843;
+    position: relative;
+    background-color: #CBBFBB;
+}
+
+.table-info{
+    position: relative;
+    left: 87.5%;
+    padding: 0.5em;
+    outline: 0.2em solid #493843;
+}
+
+.table-info-object {
+    padding-right: 0.5em;
+    font-size: 0.9vw;
+    color: #493843;
+}
+
+.view-layout-container {
+    overflow: hidden;
+    width: 90%;
+    height: 95%;
+    border: 0.5em solid #493843;
+    position: relative;
+    background-color: #CBBFBB;
+}
+
+.save-button {
+    background-color: rgb(140, 202, 140);
+    color: black;
+}

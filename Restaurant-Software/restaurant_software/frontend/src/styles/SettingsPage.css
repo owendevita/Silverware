@@ -1,0 +1,23 @@
+.logout-button {
+    color: #CBBFBB;
+    background-color:#DB2B39;
+    border-color: black;
+    flex-basis: 50%;
+    font-family: Arial;
+    font-size: 100%;
+    max-width: 15%;
+    min-width: 15%;
+
+}
+
+.settings-title{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 160%;
+    text-decoration: underline;
+    margin: 5px;
+    color: #493843;
+}

@@ -23,16 +23,16 @@ const DropdownMenuParent = ( { setCurrentFocusedComponent, createLayoutPopup, se
     
 
     return (
-        <CDropdown>
-            <CDropdownToggle color="secondary">{currentLayoutName}</CDropdownToggle>
-                <CDropdownMenu>
-                    {layoutList.map((data) => (
-                        <SelectLayoutButton setCurrentFocusedComponent={setCurrentFocusedComponent} assignedLayoutID={data.id} setHasLayout={setHasLayout} setLayoutID={setLayoutID} layoutName={data.name} setCurrentLayoutName={setCurrentLayoutName}/>
-                    ))}
-                    {layoutList.length > 0 && <CDropdownDivider />}
-                    <NewLayoutButton setCreateLayoutPopup={setCreateLayoutPopup} createLayoutPopup={createLayoutPopup} />
-                </CDropdownMenu>
-      </CDropdown>
+            <CDropdown >
+                <CDropdownToggle color="secondary">{currentLayoutName}</CDropdownToggle>
+                    <CDropdownMenu>
+                        {layoutList.map((data) => (
+                            <SelectLayoutButton setCurrentFocusedComponent={setCurrentFocusedComponent} assignedLayoutID={data.id} setHasLayout={setHasLayout} setLayoutID={setLayoutID} layoutName={data.name} setCurrentLayoutName={setCurrentLayoutName}/>
+                        ))}
+                        {layoutList.length > 0 && <CDropdownDivider />}
+                        <NewLayoutButton setCreateLayoutPopup={setCreateLayoutPopup} createLayoutPopup={createLayoutPopup} />
+                    </CDropdownMenu>
+        </CDropdown>
     )
 }
 

@@ -11,7 +11,7 @@ const CreateTableButton = ({setPositionMap, positionMap, layoutID}) => {
   
   return (
     <div>
-      <button onClick={handleClick}>Add New Table</button>
+      <button className="new-component-button" onClick={handleClick}>Add New Table</button>
       {popup && <Popup setPopup={setPopup} setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>}
     </div>
   )

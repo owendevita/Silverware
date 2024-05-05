@@ -109,8 +109,17 @@ const Parent = () => {
           }
 
         {editPopup && <EditPopup setCurrentFocusedComponent={setCurrentFocusedComponent} positionMap={positionMap} setPositionMap={setPositionMap} currentFocusedComponent={currentFocusedComponent} setPopup={setEditPopup} />}
-        <div style={stylesheet.box} >
-          
+        <div className="layout-container" >
+          {(currentFocusedComponent.index != null && (
+          positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].type == 'booth' ||
+          positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].type == 'table')) 
+          && 
+          <div className="table-info">
+            <label className="table-info-object">Seats: {positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].seats}</label> 
+            <label className="table-info-object">Table Number: {positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].table_number}</label>
+          </div>}
+
+
           {hasLayout && positionMap.get(layoutID).length > 0 && positionMap.get(layoutID).map((data, index) => (
             (data.type == 'back-wall') ? (   
             <DraggableBox labelInfo={null} key={index} index={index} currentFocusedComponent={currentFocusedComponent} setCurrentFocusedComponent={setCurrentFocusedComponent} x_position={data.x} y_position={data.y} type={data.type} tableNumber={data.table_number} seats={data.seats} setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>

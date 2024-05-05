@@ -14,11 +14,9 @@ const EditButton = ({ currentFocusedComponent, positionMap, setEditPopup }) => {
 
   return info ? (
     <div>
-      <button onClick={clickHandler}>
+      <button className="edit-button" onClick={clickHandler}>
         Edit Selected Component
       </button>
-      {(info.type == "booth" || info.type == "table") && <label>Seats: {info.seats}</label>}
-      {(info.type == "booth" || info.type == "table") && <label>Table Number: {info.table_number}</label>}
     </div>
   ) : (
     <div>Loading..</div>

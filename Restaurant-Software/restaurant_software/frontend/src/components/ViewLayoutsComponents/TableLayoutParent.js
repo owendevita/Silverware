@@ -82,9 +82,16 @@ const Parent = () => {
     return layoutID ? (
     <div style={stylesheet.mainDiv}>
         <DropdownMenuParent setCurrentFocusedComponent={setCurrentFocusedComponent} positionMap={positionMap} setPositionMap={setPositionMap} restaurantID={restaurantID} setHasLayout={setHasLayout} hasLayout={hasLayout} setLayoutID={setLayoutID} layoutID={layoutID} layoutList={layoutList} setLayoutList={setLayoutList}/>
-        {((currentFocusedComponent != undefined && currentFocusedComponent != null && currentFocusedComponent.index != null && info != null && info.type != null) && (info.type == "booth" || info.type == "table")) && <label>Seats: {info.seats}</label>}
-        {((currentFocusedComponent != undefined && currentFocusedComponent != null && currentFocusedComponent.index != null && info != null && info.type != null) && (info.type == "booth" || info.type == "table")) && <label>Table Number: {info.table_number}</label>}
-        <div style={stylesheet.box} >
+        <div className="view-layout-container" >
+          {(currentFocusedComponent.index != null && (
+            positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].type == 'booth' ||
+            positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].type == 'table')) 
+            && 
+            <div className="table-info">
+              <label className="table-info-object">Seats: {positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].seats}</label> 
+              <label className="table-info-object">Table Number: {positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].table_number}</label>
+            </div>}
+
           {hasLayout && positionMap.get(layoutID).length > 0 && positionMap.get(layoutID).map((data, index) => (
             (data.type == 'back-wall') ? (   
             <DraggableBox labelInfo={null} key={index} index={index} currentFocusedComponent={currentFocusedComponent} setCurrentFocusedComponent={setCurrentFocusedComponent} x_position={data.x} y_position={data.y} type={data.type} tableNumber={data.table_number} seats={data.seats} setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>
