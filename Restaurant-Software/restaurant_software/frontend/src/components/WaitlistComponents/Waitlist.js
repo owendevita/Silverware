@@ -34,13 +34,13 @@ const Waitlist = ({data}) => {
   return (
     
     <div  className='waitlist-box'>
-
+        <WaitlistBox setname={setPartyName} name={partyName}/>
+        <WaitlistSubmit name={partyName} parties={parties} setParties={setParties}/>
         {data.list.map((party) => (
                     <WaitlistItem key={party.name} name={party.name} partySize={party.party_size} parties={parties} setParties={setParties} time={party.time}/>
 
             ))}
-        <WaitlistBox setname={setPartyName} name={partyName}/>
-        <WaitlistSubmit name={partyName} parties={parties} setParties={setParties}/>
+
     </div>
   )
 }
