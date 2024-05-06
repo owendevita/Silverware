@@ -1,6 +1,6 @@
-//orderpage.js
 import React from 'react'
 import ChefParent from '../components/ChefComponents/ChefParent.js'
+import '../../src/styles/ChefPage.css'
 
 const ChefPage = () => {
   return (

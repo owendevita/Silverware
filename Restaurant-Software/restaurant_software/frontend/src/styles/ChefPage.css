@@ -1,0 +1,40 @@
+.chef-page{
+    background-color: #CBBFBB;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.chef-order-item{
+    background-color: #493843;
+    border: 0.2em solid black;
+    margin-bottom: 1.2vh;
+    max-width: 20vw;
+    color: #CBBFBB;
+}
+
+.remove-order-btn {
+    background-color: #DB2B39;
+    color: black;
+}
+
+.toggle-completion-btn {
+    background-color: #EABDA8;
+    color: black;
+}
+
+.selected-order-tab {
+    background-color: #493843;
+    color: #CBBFBB;
+}
+
+.unselected-order-tab{
+    background-color: #CBBFBB;
+    color: #493843;
+    border-color:#493843;
+}
+
+.chef-order-content-title{
+    font-weight: bold;
+    color: #CBBFBB;
+}

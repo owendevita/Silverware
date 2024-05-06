@@ -65,17 +65,15 @@ const OrderCreator = () => {
         
             return () => clearInterval(interval);
         }
-    }, [isEditing]);
+    }, [isEditing, restaurantID]);
 
     useEffect( async () => {
         const token_data = await getUserInfo();
-        console.log(token_data);
         setRestaurantID(token_data.restaurant);
         setEmployeeID(token_data.employee);
     }, [])
 
     useEffect(() => {
-        console.log(restaurantID);
         fetchIncompleteOrders();
     }, [restaurantID])
     
