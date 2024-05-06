@@ -17,10 +17,10 @@ const MenuItem = ({categoryIndex, index, name, price, menuID}) => {
   }
   
   return (
-    <div style={{ marginBottom: '10px', borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>
-        <div>Name: {name}</div>
-        <div>Price: {price}</div>
-        <button onClick={handleDeleteClick}>Delete</button>
+    <div className='manage-menu-item'>
+        <div className='menu-item-name'>{name}</div>
+        <div className='menu-item-price'>${price}</div>
+        <button className='menu-item-delete-button' onClick={handleDeleteClick}>Delete</button>
     </div>
   )
 }

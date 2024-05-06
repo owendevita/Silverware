@@ -129,7 +129,7 @@ const OrderCreator = () => {
         <form onSubmit={Submit}>
             <label>
                 Table Number:
-                <input type="number" value={tableNumber} onChange={(e) => setTableNumber(e.target.value)} />
+                <input className='table-number-input' type="number" value={tableNumber} onChange={(e) => setTableNumber(e.target.value)} />
             </label>
             <br></br>
             <label>

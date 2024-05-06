@@ -4,7 +4,9 @@ import '../../src/styles/CreateOrderPage.css'
 
 const OrderPage = () => {
   return (
-    <OrderParent />
+    <div className='page'>
+      <OrderParent />
+    </div>
   )
 }
 

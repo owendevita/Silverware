@@ -4,7 +4,9 @@ import '../../src/styles/ChefPage.css'
 
 const ChefPage = () => {
   return (
-    <ChefParent />
+    <div className='page'>
+      <ChefParent />
+    </div>
   )
 }
 

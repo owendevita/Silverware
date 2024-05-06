@@ -16,7 +16,7 @@ const DeleteButton = ({menuID, setMenuID}) => {
     }
   
   return (
-    <button onClick={handleClick}>Delete Menu</button>
+    <button className='menu-delete-button' onClick={handleClick}>Delete Menu</button>
   )
 }
 

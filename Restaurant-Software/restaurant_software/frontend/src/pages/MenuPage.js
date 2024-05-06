@@ -1,9 +1,10 @@
 import React from 'react'
 import MenuParent from '../components/MenuComponents/MenuParent'
+import '../styles/MenuPage.css'
 
 const MenuPage = () => {
   return (
-    <div className="menu-page">
+    <div className="page">
       <MenuParent />
     </div>
   )

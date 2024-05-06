@@ -9,8 +9,8 @@ const CategoryCreator = ({categories}) => {
       }, []);
 
   return (
-          <div>
-            <div>Category: {categories.category.name}</div>
+          <div className='menu-category'>
+            <div className='menu-category-name'>{categories.category.name}</div>
             <MenuCreator items={categories.category.items}/>
           </div>
     

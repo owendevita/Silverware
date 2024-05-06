@@ -8,7 +8,7 @@ const CreateItemButton = ( {setPopup, popup} ) => {
     
     return (
         <div>
-            <button onClick={handleClick}>Create New Item</button>
+            <button className='menu-create-buttons' onClick={handleClick}>Create New Item</button>
         </div>
       )
 }

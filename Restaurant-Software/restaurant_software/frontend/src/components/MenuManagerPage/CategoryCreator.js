@@ -59,11 +59,11 @@ const CategoryCreator = ({categories, index, menuID}) => {
   }
 
   return (
-          <div>
-            <div>Category: {categories.category.name}</div>
-            <button onClick={handleDeleteClick}>Delete</button>
-            <button onClick={handleMoveUpClick}>↑</button>
-            <button onClick={handleMoveDownClick}>↓</button>
+          <div className='menu-category'>
+            <div className='menu-category-name'>{categories.category.name}</div>
+            <button className='category-delete-button' onClick={handleDeleteClick}>Delete</button>
+            <button className='arrow-button' onClick={handleMoveUpClick}>↑</button>
+            <button className='arrow-button' onClick={handleMoveDownClick}>↓</button>
             <MenuCreator categoryIndex={index} items={categories.category.items} menuID={menuID}/>
           </div>
     

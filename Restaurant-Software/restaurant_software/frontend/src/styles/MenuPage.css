@@ -1,0 +1,54 @@
+.menu-category-name {
+    text-decoration: underline;
+    color: #493843;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.menu-category {
+    max-width: 50%;
+    margin-bottom: 1%;
+}
+
+.menu-item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 0.5%;
+}
+
+.menu-item-name {
+    color: #493843;
+}
+
+.menu-item-price {
+    color: #493843;
+}
+
+.category-delete-button {
+    background-color: #DB2B39;
+}
+
+.arrow-button {
+    color: #CBBFBB;
+    background-color: #493843;
+}
+
+.manage-menu-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 0.5%;
+}
+
+.menu-item-delete-button {
+    background-color: #DB2B39;
+    width: 30%;
+}
+
+.menu-delete-button {
+    background-color: #DB2B39;
+}
+
+.menu-create-buttons {
+    background-color: #493843;
+    color: #CBBFBB;
+}

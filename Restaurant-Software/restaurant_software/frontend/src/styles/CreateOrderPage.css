@@ -15,6 +15,13 @@
     color: #CBBFBB;
 }
 
+.table-number-input {
+    background-color: #493843;
+    margin-left: 0.5%;
+    color: #CBBFBB;
+    font-size: 80%;
+}
+
 .items-input {
     background-color: #493843;
     color: #CBBFBB;

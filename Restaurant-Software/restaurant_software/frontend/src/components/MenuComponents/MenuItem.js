@@ -2,9 +2,8 @@ import React from 'react'
 
 const MenuItem = ({name, price}) => {
   return (
-    <div style={{ marginBottom: '10px', borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>
-        <div>Name: {name}</div>
-        <div>Price: {price}</div>
+    <div className='menu-item'>
+        <div className='menu-item-name'>{name}</div><div classname='menu-item-price'>${price}</div>
     </div>
   )
 }

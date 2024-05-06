@@ -46,6 +46,22 @@ export default function App() {
         />
 
         <Route
+          path="/create-order"
+          element={
+            <SecureRouter requiredPermissions={["server", "manager", "owner"]}> 
+              <OrderPage />
+            </SecureRouter>}
+        />
+
+        <Route
+          path="/orders"
+          element={
+            <SecureRouter requiredPermissions={["chef", "manager", "owner"]}> 
+              <ChefPage />
+            </SecureRouter>}
+        />
+
+        <Route
           path="/manage-layouts"
           element={
             <SecureRouter requiredPermissions={["manager", "owner", "host"]}> 
@@ -94,9 +110,24 @@ export default function App() {
               <EmployeeCreationPage/>
             </SecureRouter>}
         />
-        <Route path="/menu" element= {<MenuPage/>} />
-        <Route path="/manage-menus" element= {<ManageMenuPage/>} />
+
+        <Route
+          path="/manage-menus"
+          element={
+            <SecureRouter requiredPermissions={["owner", "manager"]}> 
+              <ManageMenuPage/>
+            </SecureRouter>}
+        />
+        
+        <Route
+          path="/menu"
+          element={
+            <SecureRouter requiredPermissions={["host", "server", "chef", "manager", "owner"]}> 
+              <MenuPage/>
+            </SecureRouter>}
+        />
+      
       </Routes>
-    </Router>
+      </Router>
   );
 }

@@ -61,7 +61,7 @@ const ParentMenuCreator = ({menuID, setMenuID}) => {
           <CreateCategoryButton setPopup={setCategoryPopup} popup={categoryPopup}/>
           <DeleteMenuButton hasMenu={hasMenu} menuID={menuID} setHasMenu={setHasMenu} setMenuID={setMenuID} />
           {itemPopup && <ItemPopup map={map} setPopup={setItemPopup} menuID={menuID}/>}
-          {categoryPopup && <CategoryPopup map={map} setPopup={setItemPopup} menuID={menuID}/>}
+          {categoryPopup && <CategoryPopup map={map} setPopup={setCategoryPopup} menuID={menuID}/>}
          
     </div>
   ) : (

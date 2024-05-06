@@ -11,13 +11,6 @@ export const SidebarData = [
     requiredPermissions: ["host", "server", "chef", "manager", "owner"]
   },
   {
-    title: 'Menu',
-    path: '/menu',
-    icon: <LuIcons.LuMenuSquare />,
-    cName: 'nav-text',
-    requiredPermissions: ["host", "server", "chef", "manager", "owner"]
-  },
-  {
     title: 'Waitlist',
     path: '/waitlist',
     icon: <LuIcons.LuListChecks/>,
@@ -25,11 +18,39 @@ export const SidebarData = [
     requiredPermissions: ["host", "server", "manager", "owner"]
   },
   {
+    title: 'Menu',
+    path: '/menu',
+    icon: <LuIcons.LuMenuSquare />,
+    cName: 'nav-text',
+    requiredPermissions: ["host", "server", "chef", "manager", "owner"]
+  },
+  {
+    title: 'Submit Order',
+    path: '/create-order',
+    icon: <LuIcons.LuFilePlus />,
+    cName: 'nav-text',
+    requiredPermissions: ["server", "manager", "owner"]
+  },
+  {
+    title: 'Orders',
+    path: '/orders',
+    icon: <LuIcons.LuChefHat />,
+    cName: 'nav-text',
+    requiredPermissions: ["chef", "manager", "owner"]
+  },
+  {
     title: 'View Layouts',
     path: '/layouts',
     icon: <LuIcons.LuLayoutPanelLeft />,
     cName: 'nav-text',
     requiredPermissions: ["host", "server", "manager", "owner"]
+  },
+  {
+    title: 'Manage Menus',
+    path: '/manage-menus',
+    icon: <LuIcons.LuListPlus />,
+    cName: 'nav-text',
+    requiredPermissions: ["owner", "manager"]
   },
   {
     title: 'Manage Layouts',

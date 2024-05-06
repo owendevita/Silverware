@@ -8,7 +8,7 @@ const CreateItemButton = ( {setPopup, popup} ) => {
     
     return (
         <div>
-            <button onClick={handleClick}>Create New Category</button>
+            <button className='menu-create-buttons' onClick={handleClick}>Create New Category</button>
         </div>
       )
 }

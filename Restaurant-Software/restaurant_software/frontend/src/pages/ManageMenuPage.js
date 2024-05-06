@@ -4,7 +4,7 @@ import MenuManagerParent from '../components/MenuManagerPage/MenuManagerParent'
 
 const ManageMenuPage = () => {
   return (
-    <div>
+    <div className='page'>
       <MenuManagerParent />
     </div>
   )
