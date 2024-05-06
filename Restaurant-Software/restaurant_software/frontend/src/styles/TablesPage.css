@@ -1,0 +1,110 @@
+.tableImage {
+    max-width: 4%;
+    height: auto;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: grab;
+    flex-grow: 1;
+}
+.boothImage {
+    max-width: 6%;
+    height: auto;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: grab;
+    flex-grow: 1;
+}
+
+.horizontalDivider {
+    z-index: 9997 !important;
+    max-width: 5%;
+    height: auto;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.verticalDivider {
+    z-index: 9997 !important;
+    max-width: 5%;
+    height: auto;
+    user-select: none;
+    transform: rotate(90deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.labelClear {
+    color: white;
+    z-index: 9998 !important;
+    text-align: center;
+    max-width: 20%;
+    min-width: 10%;
+    height: auto;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.labelFilled {
+    color: #003B36;
+    z-index: 9998 !important; 
+    max-width: 15%;
+    min-width: 10%;
+    text-align: center;
+    user-select: none;
+    position: absolute;
+    background-color: #EABDA8;
+    border: 0.2em #003B36 solid ;
+    top: 0;
+    left: 0;
+}
+
+.backWall {
+    max-width: 40%;
+    height: auto;
+    user-select: none;
+    z-index: 5 !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.sideWall {
+    z-index: 9998 !important;
+    max-width: 1.7%;
+    height: auto;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.draggableItem {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center; 
+    text-align: center;
+    max-width: 5%;
+    max-height: auto;
+    background-color: transparent;
+    border: none;
+}
+
+.draggableBoxGrabbing {
+  cursor: grabbing;
+  
+}
+
+.draggableBoxGrab {
+    cursor: grab;
+  }
+  

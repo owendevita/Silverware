@@ -1,3 +1,14 @@
+<img src="https://github.com/owendevita/Silverware/assets/71471295/19024ae7-b07f-43ce-bdb9-be4710e5ba31" width="60%">
+
+Silverware is a restaurant management software with the following functionality:
+- Waitlist management for hosts.
+- Servers can send orders to the kitchen.
+- Chefs can manage orders sent from the servers.
+- Owners/Managers can create and manage menus and restaurant layouts.
+- Owners can create, delete, and edit employee accounts.
+
+Created as a collaborative project for CPSC362 @ California State University, Fullerton. 
+
 # How to Setup and Run the Project
 
 ## Setup

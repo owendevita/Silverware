@@ -1,0 +1,216 @@
+/* Main Page Styling */
+.employee-creation-page {
+    background-color: #CBBFBB ;
+}
+
+.page-title{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 160%;
+    text-decoration: underline;
+    margin: 5px;
+    color: #493843;
+}
+
+.inner-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.employee-create-button {
+    color: #CBBFBB;
+    background-color: #493843;
+    border-color: black;
+    font-family: Arial;
+    font-size: 100%;
+
+    margin: 0.5em;
+}
+
+.employee-box{
+    border: 0.2em solid black;
+    background-color: #493843;
+    min-width: 30%;
+    max-width: 100%;
+    margin-bottom: 0.5em;
+}
+
+.employee-delete-button {
+    color: #CBBFBB;
+    background-color:#DB2B39;
+    border-color: black;
+    flex-basis: 50%;
+    font-family: Arial;
+    font-size: 100%;
+    max-width: 15%;
+    min-width: 15%;
+
+}
+
+.employee-edit-button {
+    color: #493843;
+    background-color: #CBBFBB;
+    border-color: black;
+
+    flex-basis: 50%;
+    font-family: Arial;
+    font-size: 100%;
+}
+
+
+.box-title-label { 
+    flex-basis: 50%;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 100%;
+    color: #CBBFBB;
+}
+.box-content-label{
+    font-family: Arial;
+    color: #CBBFBB;
+    flex-basis: 50%
+}
+
+.employee-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    gap: 20px;
+    /* Add space between boxes */
+    justify-content: center;
+    /* Center content horizontally */
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* Popup Styling */
+.popup-outer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-inner {
+    position: relative;
+    padding: 1.75%;
+    width: 100%;
+    max-width: 640px;
+    background-color: #493843;
+    z-index: 9999;
+}
+
+.popup-labels {
+    color: #CBBFBB;
+
+    margin: 5px;
+}
+
+.popup-inputs {
+    background-color: #CBBFBB;
+    color: #493843;
+    width: 35%;
+    height: 15%;
+    font-family: Arial;
+
+    margin: 5px;
+}
+::-ms-reveal { /* Changes the color of the reveal password button */
+    filter: invert(100%);
+  }
+
+.popup-checkboxes {
+        background-color: #CBBFBB;
+        color: #493843;
+        font-family: Arial;
+    
+        margin: 5px;
+}
+
+.popup-titles {
+    position: relative; /* Position the element relative to its container */  
+    left: 50%; /* Move the element horizontally by 50% of its container's width */
+    transform: translateX(-50%); /* Adjust the position to center horizontally */
+    color: #CBBFBB;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 160%;
+    text-decoration: underline;
+    margin: 0px;
+}
+
+.permission-title{
+    position: relative; /* Position the element relative to its container */  
+    left: 50%; /* Move the element horizontally by 50% of its container's width */
+    transform: translateX(-50%); /* Adjust the position to center horizontally */
+    color: #CBBFBB;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 100%;
+    
+    margin: 0px;
+}
+
+.popup-buttons {
+    color: #CBBFBB;
+    background-color: #493843;
+    border-color: #CBBFBB;
+    border-width: medium;
+
+
+    margin: 5px;
+}
+
+.close-buttons {
+    color: #CBBFBB;
+    background-color: #493843;
+    border-color: #CBBFBB;
+    border-width: medium;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+
+    margin: 5px;
+
+}
+
+
+/* Needed */
+.employee-creation-page {
+    width: 91vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding-left: 0.2%;
+    padding-right: 1%;
+    margin-left: 9vw;
+}
+
+.permission-organizer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    text-align: center;
+    padding: 5px;
+}
+
+.permission-item {
+    flex-basis: calc(50% - 10px); 
+    padding: 5px;
+    box-sizing: border-box;
+}
