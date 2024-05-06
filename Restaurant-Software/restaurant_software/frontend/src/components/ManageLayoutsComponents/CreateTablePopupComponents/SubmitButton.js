@@ -12,6 +12,8 @@ const SubmitButton = ({setPositionMap, positionMap, layoutID, seats, tableType, 
         table_number: tableNumber,
         x: 0,
         y: 0,
+        has_party: false,
+        is_cleared: true
     };
 
     layout.push(newTable);

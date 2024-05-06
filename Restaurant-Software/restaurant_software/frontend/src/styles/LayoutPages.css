@@ -8,22 +8,40 @@
     background-color: #EABDA8;
     color: black;
     border-color: black;
+    position: fixed;
+    left: 20.3%;
 }
 
 .layout-container {
-    overflow: hidden;
     width: 90%;
-    height: 82.5%;
+    min-height: 82.5%;
     border: 0.5em solid #493843;
     position: relative;
     background-color: #CBBFBB;
 }
 
 .table-info{
-    position: relative;
-    left: 87.5%;
+    position: fixed;
+    left: 85%;
+    top: 1%;
     padding: 0.5em;
-    outline: 0.2em solid #493843;
+    outline: 0.3em solid #493843;
+}
+
+.bottom-buttons {
+    position: fixed;
+    left: 9.5%;
+    top: 2%;
+    padding: 0.5em;
+}
+
+.checkup-button {
+    background-color: rgb(140, 202, 140);
+}
+
+.occupied-button {
+    background-color: #493843;
+    color: #CBBFBB;
 }
 
 .table-info-object {
@@ -33,7 +51,15 @@
 }
 
 .view-layout-container {
-    overflow: hidden;
+    width: 90%;
+    height: 95%;
+    border: 0.5em solid #493843;
+    position: relative;
+    background-color: #CBBFBB;
+}
+
+.home-view-layout-container {
+    margin-top: 1.25vh;
     width: 90%;
     height: 95%;
     border: 0.5em solid #493843;
@@ -43,5 +69,11 @@
 
 .save-button {
     background-color: rgb(140, 202, 140);
+    color: black;
+}
+
+
+.set-current-layout{
+    background-color: #9da5b1;
     color: black;
 }

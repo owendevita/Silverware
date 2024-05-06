@@ -30,7 +30,7 @@ const DropdownMenuParent = ( { setCurrentFocusedComponent, createLayoutPopup, se
                             <SelectLayoutButton setCurrentFocusedComponent={setCurrentFocusedComponent} assignedLayoutID={data.id} setHasLayout={setHasLayout} setLayoutID={setLayoutID} layoutName={data.name} setCurrentLayoutName={setCurrentLayoutName}/>
                         ))}
                         {layoutList.length > 0 && <CDropdownDivider />}
-                        <NewLayoutButton setCreateLayoutPopup={setCreateLayoutPopup} createLayoutPopup={createLayoutPopup} />
+                        <NewLayoutButton setCreateLayoutPopup={setCreateLayoutPopup} createLayoutPopup={createLayoutPopup} setCurrentFocusedComponent={setCurrentFocusedComponent}/>
                     </CDropdownMenu>
         </CDropdown>
     )
