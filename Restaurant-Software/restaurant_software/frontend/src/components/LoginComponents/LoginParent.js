@@ -16,7 +16,11 @@ const LoginParent = () => {
     if(localStorage.getItem("token")){
       const token_data = await getUserInfo();
       if(token_data.employee && token_data.restaurant && token_data.permissions) {
-        window.location = '/';
+        if(token_data.permissions.admin){
+          window.location = '/manage-restaurants';
+        } else {
+          window.location = '/';
+        }
       } 
     }
   }, [])

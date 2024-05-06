@@ -7,6 +7,7 @@ import ItemPopup from './CreateItemPopupComponents/ItemPopup';
 import CategoryPopup from './CreateCategoryPopupComponents/Popup';
 import CreateItemButton from './CreateItemButton';
 import CreateCategoryButton from './CreateCategoryButton'
+import { getUserInfo } from '../../services/userService';
 
 const ParentMenuCreator = ({menuID, setMenuID}) => {
 
@@ -16,20 +17,29 @@ const ParentMenuCreator = ({menuID, setMenuID}) => {
     const [popup, setPopup] = useState(false);
     const [itemPopup, setItemPopup] = useState(false);
     const [categoryPopup, setCategoryPopup] = useState(false);
+    let [restaurantID, setRestaurantID] = useState(null);
+   
+    const updateUserInfo = async () => {
+      const token_data = await getUserInfo();
+      setRestaurantID(token_data.restaurant);
+  }
 
-
+  useEffect(() => {
+    updateUserInfo();
+    }, []); 
 
     useEffect(() => {
+      if(restaurantID){
+        console.log("getting menus:", restaurantID);
         getMenus()
-      }, []); 
-
-      useEffect(() => {
-      }, [menuID]); 
+      }
+      }, [restaurantID]);  
     
     const getMenus = async () => {
-        
-        let response = await fetch(`/api/restaurants/1/menus/`, {method: 'GET'});
+        let response = await fetch(`/api/restaurants/${restaurantID}/menus/`, {method: 'GET'});
         let data = await response.json();
+        console.log("got data:", data);
+        console.log("from restaurant ID:", restaurantID);
 
         if(data && data != null) {
           const newMap = new Map(map)
@@ -50,16 +60,16 @@ const ParentMenuCreator = ({menuID, setMenuID}) => {
         }
     }
 
-  return hasMenu && menuID ? (
+  return (hasMenu && menuID && restaurantID && restaurantID != undefined) ? (
     <div>
-      <DropdownMenuParent setHasMenu={setHasMenu} setMenuID={setMenuID} map={map} nameMap={nameMap} setMap={setMap} setPopup={setPopup} popup={popup} hasMenu={hasMenu}/>
+      <DropdownMenuParent restaurantID={restaurantID} setHasMenu={setHasMenu} setMenuID={setMenuID} map={map} nameMap={nameMap} setMap={setMap} setPopup={setPopup} popup={popup} hasMenu={hasMenu}/>
       {map.get(menuID).map((data, index) => (
         <CategoryCreator categories={data} index={index} menuID={menuID}/>
           ))}
-          {popup && <Popup setPopup={setPopup}/>}
+          {popup && <Popup restaurantID={restaurantID} setPopup={setPopup}/>}
           <CreateItemButton setPopup={setItemPopup} popup={itemPopup}/>
           <CreateCategoryButton setPopup={setCategoryPopup} popup={categoryPopup}/>
-          <DeleteMenuButton hasMenu={hasMenu} menuID={menuID} setHasMenu={setHasMenu} setMenuID={setMenuID} />
+          <DeleteMenuButton restaurantID={restaurantID} hasMenu={hasMenu} menuID={menuID} setHasMenu={setHasMenu} setMenuID={setMenuID} />
           {itemPopup && <ItemPopup map={map} setPopup={setItemPopup} menuID={menuID}/>}
           {categoryPopup && <CategoryPopup map={map} setPopup={setCategoryPopup} menuID={menuID}/>}
          

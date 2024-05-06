@@ -3,17 +3,20 @@ import { CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem, CDropdownDivi
 import '@coreui/coreui/dist/css/coreui.min.css'
 import SelectMenuButton from './SelectMenuButton'
 import NewMenuButton from './NewMenuButton'
+import { getUserInfo } from '../../../services/userService';
 
-const DropdownMenuParent = ({setHasMenu, setMenuID, map, nameMap, setMap, setPopup, popup, hasMenu}) => {
+const DropdownMenuParent = ({restaurantID, setHasMenu, setMenuID, map, nameMap, setMap, setPopup, popup, hasMenu}) => {
    
     let [menuList, setMenuList] = useState([]);
 
     useEffect(() => {
-        getMenus()
+        getMenus();
       }, []);
 
     const getMenus = async () => {
-        let response = await fetch('/api/restaurants/1/menus/');
+        const token_data = await getUserInfo();
+
+        let response = await fetch(`/api/restaurants/${token_data.restaurant}/menus/`);
         let data = await response.json();
       
         setMenuList(data);
@@ -32,7 +35,7 @@ const DropdownMenuParent = ({setHasMenu, setMenuID, map, nameMap, setMap, setPop
                         <SelectMenuButton assignedMenuID={menu.id} setHasMenu={setHasMenu} setMenuID={handleMenuSelection} nameMap={nameMap} />
                     ))}
                     {hasMenu && <CDropdownDivider />}
-                    <NewMenuButton map={map} setMap={setMap} setHasMenu={setHasMenu} setMenuID={setMenuID} setPopup={setPopup} popup={popup}/>
+                    <NewMenuButton restaurantID={restaurantID} map={map} setMap={setMap} setHasMenu={setHasMenu} setMenuID={setMenuID} setPopup={setPopup} popup={popup}/>
                 </CDropdownMenu>
       </CDropdown>
     )

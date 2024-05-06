@@ -80,7 +80,7 @@ export default function App() {
         <Route
           path="/settings"
           element={
-            <SecureRouter requiredPermissions={["host", "server", "chef", "manager", "owner"]}> 
+            <SecureRouter requiredPermissions={["host", "server", "chef", "manager", "owner", "admin"]}> 
               <SettingsPage/>
             </SecureRouter>}
         />

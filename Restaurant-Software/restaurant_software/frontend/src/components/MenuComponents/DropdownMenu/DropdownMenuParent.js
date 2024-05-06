@@ -3,7 +3,7 @@ import { CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem, CDropdownDivi
 import '@coreui/coreui/dist/css/coreui.min.css'
 import SelectMenuButton from './SelectMenuButton'
 
-const DropdownMenuParent = ({setHasMenu, setMenuID, map}) => {
+const DropdownMenuParent = ({restaurantID, setHasMenu, setMenuID, map}) => {
    
     let [menuList, setMenuList] = useState([]);
 
@@ -12,7 +12,7 @@ const DropdownMenuParent = ({setHasMenu, setMenuID, map}) => {
       }, []);
 
     const getMenus = async () => {
-        let response = await fetch('/api/restaurants/1/menus/');
+        let response = await fetch(`/api/restaurants/${restaurantID}/menus/`);
         let data = await response.json();
       
         setMenuList(data);

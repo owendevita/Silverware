@@ -31,7 +31,7 @@ const OrderCreator = () => {
         
         console.log(orderData);
 
-        let response = await fetch('http://127.0.0.1:8000/api/create/order', {
+        let response = await fetch('/api/create/order', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ const OrderCreator = () => {
 
         console.log('Order updated:', updatedOrderData);
 
-        let response = await fetch(`http://127.0.0.1:8000/api/orders/${editingOrder.id}/`, {
+        let response = await fetch(`/api/orders/${editingOrder.id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

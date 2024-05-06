@@ -71,6 +71,6 @@ export const SidebarData = [
     path: '/settings',
     icon: <LuIcons.LuSettings />,
     cName: 'nav-text',
-    requiredPermissions: ["host", "server", "chef", "manager", "owner"]
+    requiredPermissions: ["host", "server", "chef", "manager", "owner", "admin"]
   }
 ];

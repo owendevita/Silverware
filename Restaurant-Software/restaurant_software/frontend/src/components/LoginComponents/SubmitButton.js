@@ -22,8 +22,12 @@ const SubmitButton = ({ employeeID, password }) => {
 
         if (data.permissions && data.restaurant) {
           
-          // TO-DO - REDIRECT TO SPECIFIC PAGES BASED ON PERMISSIONS
-          window.location = '/';
+          if(data.permissions.admin){
+            window.location = '/manage-restaurants';
+          } else {
+            window.location = '/';
+          }
+            
 
         } else {
           console.error("Restaurant or permissions not found in response:", data);

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import CloseButton from './CloseButton'
 import Name from './Name'
 import SubmitButton from './SubmitButton'
@@ -7,6 +7,11 @@ const Popup = ({setPopup, restaurantID}) => {
   
   const [name, setName] = useState("");
   
+  useEffect(() => {
+    console.log("IN RESTAURANT ID:", restaurantID);
+  }, [])
+  
+
   return (
     <div className='popup-outer'>
         <div className="popup-inner">
@@ -15,6 +20,7 @@ const Popup = ({setPopup, restaurantID}) => {
             <Name setName={setName} label={"Name"}/>
             <SubmitButton
               name={name}
+              restaurantID={restaurantID}
               />
         </div>
     </div>

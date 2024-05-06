@@ -20,6 +20,7 @@ class Employee(AbstractBaseUser):
 
 class Menu(models.Model):
     items = models.JSONField()
+    name = models.CharField(max_length=25)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
 
 class Waitlist(models.Model):

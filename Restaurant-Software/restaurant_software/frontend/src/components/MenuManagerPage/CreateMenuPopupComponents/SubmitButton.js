@@ -1,8 +1,10 @@
 import React from 'react'
+import { getUserInfo } from '../../../services/userService';
 
-const SubmitButton = ({name}) => {
+const SubmitButton = ({name, restaurantID}) => {
 
   const handleClick = async() =>{
+      const token_data = await getUserInfo();
       fetch('/api/create/menu/', {
         method: 'POST',
         headers: {  
@@ -11,17 +13,17 @@ const SubmitButton = ({name}) => {
         body: JSON.stringify({
           name: name,
           items: [],
-          restaurant: 1 // TO-DO: MAKE THIS USER'S RESTAURANT ID
+          restaurant: token_data.restaurant
         })
       })
       .then(response => {
         if (!response.ok) {
-            console.log('Network response was not ok');
+            console.log('Network response was not ok', response.body);
         }
         return response.json();
     })
     .then(data => {
-        window.location.reload()
+      window.location.reload();
     })
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);

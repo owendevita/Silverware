@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { CDropdownItem } from '@coreui/react'
 import SelectMenuButton from './SelectMenuButton'
 
-const NewMenuButton = ( {map, setMap, setHasMenu, setMenuID, setPopup, popup} ) => {
+const NewMenuButton = ( {restaurantID, map, setMap, setHasMenu, setMenuID, setPopup, popup} ) => {
     
     const handleClick = () => {
       setPopup(!popup);

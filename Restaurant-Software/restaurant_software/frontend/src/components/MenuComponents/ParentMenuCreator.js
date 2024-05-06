@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CategoryCreator from './CategoryCreator'
 import DropdownMenuParent from './DropdownMenu/DropdownMenuParent';
+import { getUserInfo } from '../../services/userService';
 
 const ParentMenuCreator = () => {
 
@@ -8,10 +9,24 @@ const ParentMenuCreator = () => {
     let [nameMap, setNameMap] = useState(new Map());
     let [hasMenu, setHasMenu] = useState(false);
     let [menuID, setMenuID] = useState(null);
+    let [restaurantID, setRestaurantID] = useState(null);
+   
+    const updateUserInfo = async () => {
+      const token_data = await getUserInfo();
+      setRestaurantID(token_data.restaurant);
+      console.log(token_data);
+  }
+
+  useEffect(() => {
+    updateUserInfo();
+    }, []); 
 
     useEffect(() => {
-        getMenus()
-      }, []); 
+        if(restaurantID){
+          console.log("GETTING MENUS!")
+          getMenus();
+        }
+      }, [restaurantID]); 
 
       useEffect(() => {
         console.log(map.get(menuID));
@@ -19,7 +34,7 @@ const ParentMenuCreator = () => {
     
     const getMenus = async () => {
         
-        let response = await fetch(`/api/restaurants/1/menus/`, {method: 'GET'});
+        let response = await fetch(`/api/restaurants/${restaurantID}/menus/`, {method: 'GET'});
         let data = await response.json();
 
         if(data && data != null) {
@@ -41,9 +56,9 @@ const ParentMenuCreator = () => {
         }
     }
 
-  return hasMenu && menuID ? (
+  return hasMenu && menuID && restaurantID ? (
     <div>
-      <DropdownMenuParent setHasMenu={setHasMenu} setMenuID={setMenuID} map={nameMap}/>
+      <DropdownMenuParent restaurantID={restaurantID} setHasMenu={setHasMenu} setMenuID={setMenuID} map={nameMap}/>
       {map.get(menuID).map((data) => (
         <CategoryCreator categories={data}/>
           ))}
