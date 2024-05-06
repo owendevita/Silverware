@@ -75,7 +75,14 @@ export default function App() {
         />
 
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/waitlist" element={<WaitlistPage />} />
+
+        <Route
+          path="/waitlist"
+          element={
+            <SecureRouter requiredPermissions={["host", "server", "manager", "owner"]}> 
+              <WaitlistPage />
+            </SecureRouter>}
+        />
         
         <Route
           path="/manage-employees"

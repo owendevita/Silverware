@@ -3,7 +3,7 @@ import WaitlistParent from '../components/WaitlistComponents/WaitlistParent.js'
 import '../styles/WaitlistPage.css'
 const WaitlistPage = () => {
   return (
-    <div className="waitlist-page">
+    <div className="page">
     <WaitlistParent />
     </div>
   )
