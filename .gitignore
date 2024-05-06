@@ -13,3 +13,6 @@ db.sqlite3
 # Ignore Main.js
 Restaurant-Software/restaurant_software/frontend/static/frontend/main.js.LICENSE.txt
 Restaurant-Software/restaurant_software/frontend/static/frontend/main.js
+
+# Ignore .DS_Store Files
+.DS_Store
