@@ -4,12 +4,12 @@ from .models import Restaurant, Employee, Menu, Order, RestaurantLayout, Waitlis
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'current_layout']
 
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = ['first_name', 'last_name', 'employee_id', 'password', 'permissions', 'restaurant']
+        fields = ['id', 'first_name', 'last_name', 'employee_id', 'password', 'permissions', 'restaurant']
 
 class WaitlistSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,4 +29,4 @@ class OrderSerializer(serializers.ModelSerializer):
 class RestaurantLayoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = RestaurantLayout
-        fields = ['id', 'restaurant', 'position']
+        fields = ['id', 'restaurant', 'layout', 'name']

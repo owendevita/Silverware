@@ -1,13 +1,12 @@
 import React from 'react'
 
-import Header from '../components/Header'
+import MainPageParent from '../components/MainPageComponents/MainPageParent'
 
 const MainPage = () => {
   return (
-    <>
-        <Header/>
-        <div>BELOW HEADER</div>
-    </>
+    <div className="page">
+      <MainPageParent />
+    </div>
   )
 }
 

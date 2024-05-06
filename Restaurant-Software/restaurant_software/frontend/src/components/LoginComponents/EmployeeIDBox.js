@@ -9,9 +9,9 @@ const EmployeeIDBox = ({employeeID, setEmployeeID}) => {
 
   return (
     <div>
-      <label htmlFor="employee_id">Employee ID</label>
+      <label className="login-labels" htmlFor="employee_id">Employee ID</label>
       <br/>
-      <input type="text" id="employee_id" value={employeeID} name="employee_id" onChange={handleInputChange}/>
+      <input className="login-inputs" type="text" id="employee_id" value={employeeID} name="employee_id" onChange={handleInputChange}/>
     </div>
   )
 }
