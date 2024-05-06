@@ -62,14 +62,35 @@ const Parent = () => {
         
         for(let i = 0; i < data.length; i++){
           newMap.set(data[i].id, data[i].layout);
-          console.log(data[i].layout);
-          
         }
         setPositionMap(newMap);
         setHasLayout(true);
       }
   
   
+    }
+    
+    const setCurrentLayoutClick = async () => {
+      let response = await fetch(`/api/restaurants/${restaurantID}/`, {method: 'GET'});
+      let data = await response.json();
+
+      fetch(`/api/restaurants/${restaurantID}/`, {
+        method: 'PUT',
+        headers: {  
+        'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({name: data.name, current_layout: layoutID})
+      }) .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+      }) .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+          console.error('There has been a problem with your fetch operation:', error);
+      });
     }
 
     const userInfo = async () =>{
@@ -95,6 +116,7 @@ const Parent = () => {
           <CreateWallButton setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>
           <CreateLabelButton setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>
         </div>}
+        <button className='set-current-layout' onClick={setCurrentLayoutClick}>Set As Current Layout</button>
         <SaveButton positionMap={positionMap} restaurantID={restaurantID} layoutID={layoutID} setLayoutID = {setLayoutID} hasLayout = {hasLayout} setHasLayout = {setHasLayout} />
         <DeleteButton setCurrentFocusedComponent={setCurrentFocusedComponent} setLayoutList={setLayoutList} restaurantID={restaurantID} style={stylesheet.delete_button} hasLayout = {hasLayout} layoutID={layoutID} setHasLayout={setHasLayout}  setLayoutID={setLayoutID} />
         {(currentFocusedComponent.index != null && (
@@ -111,8 +133,18 @@ const Parent = () => {
           }
 
         {editPopup && <EditPopup setCurrentFocusedComponent={setCurrentFocusedComponent} positionMap={positionMap} setPositionMap={setPositionMap} currentFocusedComponent={currentFocusedComponent} setPopup={setEditPopup} />}
-        <div style={stylesheet.box} >
-          
+        
+        {(currentFocusedComponent.index != null && (
+          positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].type == 'booth' ||
+          positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].type == 'table')) 
+          && 
+          <div className="table-info">
+            <label className="table-info-object">Seats: {positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].seats}</label> 
+            <label className="table-info-object">Table Number: {positionMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].table_number}</label>
+          </div>}
+
+        <div className="layout-container" >
+
           {hasLayout && positionMap.get(layoutID).length > 0 && positionMap.get(layoutID).map((data, index) => (
             (data.type == 'back-wall') ? (   
             <DraggableBox labelInfo={null} key={index} index={index} currentFocusedComponent={currentFocusedComponent} setCurrentFocusedComponent={setCurrentFocusedComponent} x_position={data.x} y_position={data.y} type={data.type} tableNumber={data.table_number} seats={data.seats} setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>

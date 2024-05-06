@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser
 # Create your models here.
 class Restaurant(models.Model):
     name = models.CharField(max_length=35)
+    current_layout = models.PositiveSmallIntegerField(null=True, blank=True)
 
 class Employee(AbstractBaseUser):
     first_name = models.CharField(max_length=25)

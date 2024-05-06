@@ -11,7 +11,7 @@ const CreateLabelButton = ({setPositionMap, positionMap, layoutID}) => {
   
   return (
     <div>
-      <button onClick={handleClick}>Add New Label</button>
+      <button className="new-component-button" onClick={handleClick}>Add New Label</button>
       {popup && <Popup setPopup={setPopup} setPositionMap={setPositionMap} positionMap={positionMap} layoutID={layoutID}/>}
     </div>
   )

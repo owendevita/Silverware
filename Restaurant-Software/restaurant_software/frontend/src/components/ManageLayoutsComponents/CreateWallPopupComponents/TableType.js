@@ -7,7 +7,7 @@ const Passsword = ({setTableType}) => {
   
     return (
         <div>
-            <label className="popup-labels">Table Type:</label>
+            <label className="popup-labels">Wall Type:</label>
             <button onClick={() => handleClick("vertical-divider")}>Vertical Divider</button>
             <button onClick={() => handleClick("horizontal-divider")}>Horizontal Divider</button>
             <button onClick={() => handleClick("back-wall")}>Back Wall</button>

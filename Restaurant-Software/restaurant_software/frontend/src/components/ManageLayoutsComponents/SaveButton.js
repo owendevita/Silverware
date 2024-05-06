@@ -48,7 +48,7 @@ const SaveButton = ( { layoutID, setLayoutID, hasLayout, setHasLayout, restauran
   }
   
   return (
-      <button onClick={handleClick}>Save</button>
+      <button className="save-button" onClick={handleClick}>Save</button>
     )
   
 }

@@ -1,12 +1,10 @@
 import React from 'react'
 import '../styles/TablesPage.css'
-import TableLayoutParent from '../components/ManageLayoutsComponents/TableLayoutParent'
-import '../styles/LoginPage.css'
-import '../styles/LayoutPages.css'
+import TableLayoutParent from '../components/ViewLayoutsComponents/TableLayoutParent'
 
 const stylesheet = {
   mainDiv:{
-    overflow: 'hidden',
+    overflow: 'hidden'
   }
 };
 
