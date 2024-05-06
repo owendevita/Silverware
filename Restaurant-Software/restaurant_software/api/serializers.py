@@ -19,7 +19,7 @@ class WaitlistSerializer(serializers.ModelSerializer):
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
-        fields = ['id', 'items', 'restaurant', 'name']
+        fields = ['id', 'items', 'restaurant']
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:

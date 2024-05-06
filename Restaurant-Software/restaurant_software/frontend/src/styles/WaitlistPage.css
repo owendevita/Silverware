@@ -1,0 +1,102 @@
+/* Beautifying */ 
+
+.waitlist-labels {
+    color: #493843 ;
+    font-family: Arial;
+    font-size: 140%;
+    font-weight: bold;
+}
+
+.wailist-inputs {
+    background-color: #493843;
+    color: #CBBFBB;
+    width: 15%;
+    height: 15%;
+    font-family: Arial;
+    font-weight: bold;
+
+    margin: 5px;
+}
+
+.waitlist-buttons {
+    color: #493843;
+    background-color: #CBBFBB;
+    border-color: #493843;
+    border-width: medium;
+
+
+    margin: 5px;
+
+}
+
+.waitlist-page {
+    background-color: #CBBFBB ;
+}
+
+.error-message{
+    background-color: #DB2B39 ;
+    color: #493843 ;
+    font-weight: bold;
+    font-size: 125%;
+    margin: 5px;
+}
+
+/* Needed */
+
+.waitlist-page {
+    width: 100vw;
+    height: 100vh;
+
+    padding: 5px;
+}
+
+.waitlist-box{
+    border: 0.2em solid black;
+    background-color: #493843;
+    width: 45vw;
+    max-width: 45vw;
+    min-width: 10vw;
+    height: 90vh;
+    overflow-y: auto;
+    margin-top: 5vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    display: inline-block; 
+}
+
+.party-content-title{ 
+    flex-basis: 50%;
+    
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 100%;
+    color: #CBBFBB;
+}
+.party-content-label{
+    font-family: Arial;
+    padding: 1.5%;
+    color: #CBBFBB;
+    flex-basis: 50%
+}
+
+.waitlist-content-title{ 
+    position: fixed;
+    font-family: Arial;
+    font-weight: bold;
+    left: 20vw;
+    top: 1.5vh;
+    font-size: 150%;
+    text-decoration: underline;
+    color: #493843;
+}
+
+.reservation-content-title{ 
+    position: fixed;
+    left: 70vw;
+    top: 1.5vh;
+    text-decoration: underline;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 150%;
+    color: #493843;
+}
