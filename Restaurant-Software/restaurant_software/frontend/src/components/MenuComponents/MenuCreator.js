@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react'
 import MenuItem from './MenuItem'
 
 const MenuCreator = ({items}) => {
+
+  useEffect(() => {
+    console.log("itemstest: ", items);
+  }, []);
     
     return (
     <div>

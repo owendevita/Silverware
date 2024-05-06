@@ -10,5 +10,6 @@ urlpatterns = [
     path('manage-employees/', index),
     path('manage-restaurants', index),
     path('menu/', index),
+    path('manage-menus/', index),
     path('settings', index)
 ]
