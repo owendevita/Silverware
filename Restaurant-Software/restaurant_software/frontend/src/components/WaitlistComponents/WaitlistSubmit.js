@@ -20,8 +20,6 @@ const SubmitButton = ({ parties, setParties }) => {
 
     const newParty = { name: name, party_size: partySize, time:currentTime};
 
-    console.log(newParty);
-
     setParties(prevParties => [...prevParties, newParty]);
 
     setName('');

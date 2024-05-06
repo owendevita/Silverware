@@ -19,7 +19,7 @@ const DropdownMenuParent = ({restaurantID, setHasMenu, setMenuID, map}) => {
     }
 
     const handleMenuSelection = (assignedMenuID) => {
-        console.log('Selected menu:', assignedMenuID)
+
         setMenuID(assignedMenuID)
     }
 

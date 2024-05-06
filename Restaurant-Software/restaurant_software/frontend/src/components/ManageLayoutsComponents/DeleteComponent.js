@@ -5,7 +5,6 @@ const DeleteComponent = ({ style, currentFocusedComponent, setCurrentFocusedComp
 
     const clickHandler = async () => {
         const newMap = new Map(positionMap);
-        console.log(newMap.get(currentFocusedComponent.layoutID)[currentFocusedComponent.index].type);
         
         const info = newMap.get(currentFocusedComponent.layoutID);
         newMap.set(currentFocusedComponent.layoutID, info.filter((info, index) => index !== currentFocusedComponent.index));

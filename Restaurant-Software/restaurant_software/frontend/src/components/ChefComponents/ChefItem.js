@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react'
 
 const ChefItem = ({items, table_number, complete, onRemove, onToggleComplete}) => {
-    console.log("complete?: ", complete);
   return (
     <div className="chef-order-item">
         <div className='chef-order-content-title'>Order items:</div> {items}

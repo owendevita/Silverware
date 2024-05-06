@@ -21,7 +21,6 @@ function Navbar() {
       permissions[permission]
     );
 
-    console.log(hasRequiredPermission);
     return hasRequiredPermission;
   }
 

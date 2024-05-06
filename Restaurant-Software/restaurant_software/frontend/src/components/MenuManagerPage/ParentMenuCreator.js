@@ -30,7 +30,6 @@ const ParentMenuCreator = ({menuID, setMenuID}) => {
 
     useEffect(() => {
       if(restaurantID){
-        console.log("getting menus:", restaurantID);
         getMenus()
       }
       }, [restaurantID]);  
@@ -38,9 +37,6 @@ const ParentMenuCreator = ({menuID, setMenuID}) => {
     const getMenus = async () => {
         let response = await fetch(`/api/restaurants/${restaurantID}/menus/`, {method: 'GET'});
         let data = await response.json();
-        console.log("got data:", data);
-        console.log("from restaurant ID:", restaurantID);
-
         if(data && data != null) {
           const newMap = new Map(map)
           const newNameMap = new Map(nameMap)

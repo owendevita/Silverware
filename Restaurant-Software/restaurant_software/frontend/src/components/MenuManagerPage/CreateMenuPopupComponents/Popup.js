@@ -7,11 +7,6 @@ const Popup = ({setPopup, restaurantID}) => {
   
   const [name, setName] = useState("");
   
-  useEffect(() => {
-    console.log("IN RESTAURANT ID:", restaurantID);
-  }, [])
-  
-
   return (
     <div className='popup-outer'>
         <div className="popup-inner">

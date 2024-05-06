@@ -7,9 +7,8 @@ const CategoryCreator = ({categories, index, menuID}) => {
   const handleDeleteClick = async () => {
     let response = await fetch(`/api/menus/${menuID}`, {method: 'GET'});
     let data = await response.json();
-    console.log(data.items);
     data.items.splice(index, 1);
-    console.log(data.items);
+  
     fetch(`/api/menus/${menuID}/`, {
         method: 'PUT',
         headers: {  

@@ -29,7 +29,6 @@ const OrderCreator = () => {
             restaurant: restaurantID
         };
         
-        console.log(orderData);
 
         let response = await fetch('/api/create/order', {
             method: 'POST',
@@ -40,7 +39,6 @@ const OrderCreator = () => {
         });
 
         let data = await response.json();
-        console.log('Order created:', data);
 
         fetchIncompleteOrders();
     };
@@ -79,7 +77,6 @@ const OrderCreator = () => {
     
     
     const handleEditClick = (order) => {
-        console.log(order);
         setEditingOrder(order);
         setEditingOrderState(order);
         setIsEditing(false);
@@ -102,8 +99,6 @@ const OrderCreator = () => {
             restaurant: restaurantID
         };
 
-        console.log('Order updated:', updatedOrderData);
-
         let response = await fetch(`/api/orders/${editingOrder.id}/`, {
             method: 'PUT',
             headers: {
@@ -113,7 +108,6 @@ const OrderCreator = () => {
         });
 
         let data = await response.json();
-        console.log('Order:', data);
 
         fetchIncompleteOrders();
         setEditingOrder(null);

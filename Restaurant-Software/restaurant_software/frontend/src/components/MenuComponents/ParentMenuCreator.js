@@ -14,7 +14,7 @@ const ParentMenuCreator = () => {
     const updateUserInfo = async () => {
       const token_data = await getUserInfo();
       setRestaurantID(token_data.restaurant);
-      console.log(token_data);
+
   }
 
   useEffect(() => {
@@ -23,14 +23,11 @@ const ParentMenuCreator = () => {
 
     useEffect(() => {
         if(restaurantID){
-          console.log("GETTING MENUS!")
+  
           getMenus();
         }
       }, [restaurantID]); 
-
-      useEffect(() => {
-        console.log(map.get(menuID));
-      }, [menuID]); 
+ 
     
     const getMenus = async () => {
         

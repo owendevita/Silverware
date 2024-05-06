@@ -9,8 +9,7 @@ const MenuCreator = ({items, menuID, categoryIndex}) => {
   return (
     <div>
       {items.map((data, index) => {
-        console.log("Data:", data);
-        console.log("Index:", index);
+
         return (
           <MenuItem
             categoryIndex={categoryIndex}

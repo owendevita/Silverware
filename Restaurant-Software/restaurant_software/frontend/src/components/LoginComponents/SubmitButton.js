@@ -18,7 +18,6 @@ const SubmitButton = ({ employeeID, password }) => {
     if (response.ok) {
       if (data.token) {
         localStorage.setItem('token', data.token);
-        console.log("TOKEN FOUND!");
 
         if (data.permissions && data.restaurant) {
           

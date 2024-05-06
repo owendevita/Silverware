@@ -17,7 +17,6 @@ const SubmitButton = ({setPositionMap, positionMap, layoutID, seats, tableType, 
     };
 
     layout.push(newTable);
-    console.log("NEW LAYOUT:", layout);
     newMap.set(layoutID, layout);
     setPositionMap(newMap);
     setPopup(false);

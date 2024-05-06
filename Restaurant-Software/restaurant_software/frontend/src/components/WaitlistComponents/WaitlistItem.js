@@ -10,7 +10,6 @@ const WaitlistItem = ({name, partySize, parties, setParties, time}) => {
     const interval = setInterval(() => {
      let dateDifference = new Date() - new Date(time);
      const minuteDifference = Math.round(((dateDifference % 86400000) % 3600000) / 60000)
-     console.log(minuteDifference);
      setTimeDifference(minuteDifference);
 
     }, 1000); 

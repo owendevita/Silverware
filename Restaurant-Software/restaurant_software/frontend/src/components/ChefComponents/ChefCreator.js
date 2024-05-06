@@ -37,11 +37,9 @@ const ChefCreator = () => {
         let data = await response.json();
 
         setOrder(data);
-        console.log(data);
 
     }
 
-    console.log('Order:', order);
 
 
     const toggleOrderComplete = async (orderId) => {
