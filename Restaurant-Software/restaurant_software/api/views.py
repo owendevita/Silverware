@@ -212,7 +212,7 @@ def get_token_info(request):
             permissions = employee.permissions
             restaurant = employee.restaurant.id
 
-            response_message = {'employee': employee.id, 'permissions': permissions, 'restaurant': restaurant}
+            response_message = {'employee': employee.id, 'permissions': permissions, 'restaurant': restaurant, 'employee_id':employee.employee_id}
             return Response(response_message)
 
         except Token.DoesNotExist:

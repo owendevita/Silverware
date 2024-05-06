@@ -1,0 +1,62 @@
+.create-order-page{
+    background-color: #CBBFBB;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.order-titles {
+    color: #493843;
+    text-decoration: underline;
+}
+
+.order-submit-button{
+    background-color: #493843;
+    color: #CBBFBB;
+}
+
+.items-input {
+    background-color: #493843;
+    color: #CBBFBB;
+    width: 20vw;
+    height: 20vh;
+    font-size: 80%;
+}
+
+.incomplete-order-box {
+    background-color: #493843;
+    border: 0.2em solid black;
+    margin-bottom: 1.2vh;
+    max-width: 20vw;
+    color: #CBBFBB;
+}
+
+.order-text {
+    color: #CBBFBB;
+}
+
+.incomplete-order-content-title{
+    font-weight: bold;
+    color: #CBBFBB;
+}
+
+.order-delete-button {
+    background-color: #DB2B39;
+    color: black;
+}
+
+.order-edit-button {
+    background-color: #EABDA8;
+    color: black;
+}
+
+.order-save-button {
+    background-color: rgb(140, 202, 140);
+    color: black;
+}
+
+.incomplete-order-item-input {
+    background-color: #CBBFBB;
+    font-size: 80%;
+    border: 0.2em solid black;
+}

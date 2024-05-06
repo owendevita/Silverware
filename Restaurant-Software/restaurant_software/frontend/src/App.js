@@ -16,7 +16,8 @@ import RestaurantManagementPage from './pages/RestaurantManagementPage'
 import MenuPage from './pages/MenuPage'
 import ManageMenuPage from './pages/ManageMenuPage'
 import SettingsPage from './pages/SettingsPage'
-
+import ChefPage from './pages/ChefPage'
+import OrderPage from './pages/OrderPage'
 
 
 export default function App() {

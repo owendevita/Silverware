@@ -7,6 +7,8 @@ urlpatterns = [
     path('layouts/', index),
     path('login/', index),
     path('waitlist/', index),
+    path('orders/', index),
+    path('create-order/', index),
     path('manage-employees/', index),
     path('manage-restaurants', index),
     path('menu/', index),
