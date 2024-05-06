@@ -13,6 +13,7 @@ urlpatterns = [
     path('restaurants/<int:restaurant_pk>/employees/', views.restaurant_employee_list, name='restaurant_employee_list'),
     path('restaurants/<int:restaurant_pk>/orders/', views.restaurant_order_list, name='restaurant_order_list'),
     path('restaurants/<int:restaurant_pk>/layouts/', views.restaurant_layout_list, name='restaurant_layout_list'),
+    path('restaurants/<int:restaurant_pk>/waitlists/', views.restaurant_waitlist_list, name='restaurant_waitlist_list'),
 
     # Employee URLs
     path('create/employee/', views.create_employee, name='create_employee'),

@@ -29,7 +29,7 @@ const SecureRouter = ({requiredPermissions, children }) => {
     return children;
   } else {
     // Handle case where user does not have permission
-    return <Navigate to="/" replace />;
+    return <Navigate to="/login" replace />;
   }
 };
 

@@ -12,7 +12,7 @@ const Popup = ({setPopup, setPositionMap, positionMap, layoutID}) => {
   return (
     <div className='popup-outer'>
         <div className="popup-inner">
-          <label className="popup-titles">Create Employee</label>
+          <label className="popup-titles">Create New Wall</label>
           <CloseButton setPopup={setPopup}/>
           <TableType setTableType={setTableType}/>
           <SubmitButton

@@ -1,28 +1,32 @@
 import React, { useState, useEffect } from 'react'
-import WaitlistItem from './WaitlistItem';
+import Waitlist from './Waitlist';
 
-const WaitlistCreator = () => {
-    
+const WaitlistCreator = ({restaurantID}) => {
 
-    let [list, setList] = useState([]);
+    let [waitlists, setWaitlists] = useState([]);
 
-    useEffect(() => {
-        getWaitlist()
-      }, []); 
-    
     const getWaitlist = async () => {
-        
-        let response = await fetch(`/api/waitlists/2/`, {method: 'GET'});
+
+        let response = await fetch(`/api/restaurants/${restaurantID}/waitlists/`, {method: 'GET'});
         let data = await response.json();
 
-        setList(data.list);
+        setWaitlists(data);
+
     }
+
+    useEffect(() => {
+        getWaitlist();
+    }, [])
     
-    return (
+
+  return (
+    
     <div>
-       {list.map((data) => (
-          <WaitlistItem name={data.name} partySize={data.party_size} />
-        ))}
+         <label className="waitlist-content-title">Walk-In Waitlist</label>
+         <label className="reservation-content-title">Reservations</label>
+        {waitlists.map((data) => (
+                    <Waitlist key={data.id} data={data}/>
+            ))}
     </div>
   )
 }

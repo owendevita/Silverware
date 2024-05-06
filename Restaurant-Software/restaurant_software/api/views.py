@@ -52,7 +52,6 @@ def restaurant_details(request, pk):
     elif request.method == 'DELETE':
         restaurant.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
 @api_view(['GET'])
 def restaurant_menu_list(request, restaurant_pk):
     try:
@@ -96,6 +95,18 @@ def restaurant_layout_list(request, restaurant_pk):
     layouts = restaurant.restaurantlayout_set.all()
     serializer = RestaurantLayoutSerializer(layouts, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def restaurant_waitlist_list(request, restaurant_pk):
+    try:
+        restaurant = Restaurant.objects.get(pk=restaurant_pk)
+    except Restaurant.DoesNotExit:
+        return Response({'error' : 'Restaurant not found.'}, status=status.HTTP_404_NOT_FOUND)
+    
+    waitlists = restaurant.waitlist_set.all()
+    serializer = WaitlistSerializer(waitlists, many=True)
+    return Response(serializer.data)
+
 
 # Employee Views
 @api_view(['POST'])
@@ -148,7 +159,7 @@ def create_waitlist(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-@api_view(['GET'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def waitlist_details(request, pk):
     try:
         waitlist = Waitlist.objects.get(pk=pk)
@@ -158,7 +169,15 @@ def waitlist_details(request, pk):
     if request.method == 'GET':
         serializer = WaitlistSerializer(waitlist)
         return Response(serializer.data)
-
+    elif request.method == 'PUT':
+        serializer = WaitlistSerializer(waitlist, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        waitlist.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 # Login/Authentication Views
 @api_view(['POST'])

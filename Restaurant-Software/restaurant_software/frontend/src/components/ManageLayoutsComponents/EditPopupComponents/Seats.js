@@ -3,8 +3,12 @@ import React from 'react'
 const Seats = ({seats, setSeats}) => {
 
     const handleChange = (event) => {
-        const seatCount = parseInt(event.target.value);
-        setSeats(seatCount);
+        if(event.target.value == ''){
+            setSeats('');
+        } else {
+            const seatCount = parseInt(event.target.value);
+            setSeats(tableNumber);
+        }
     }
   
     return (
